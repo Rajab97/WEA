@@ -22,14 +22,14 @@ namespace WEA.SharedKernel.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class ExceptionMessages {
+    public class ValidationMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ExceptionMessages() {
+        internal ValidationMessages() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace WEA.SharedKernel.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WEA.SharedKernel.Resources.ExceptionMessages", typeof(ExceptionMessages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WEA.SharedKernel.Resources.ValidationMessages", typeof(ValidationMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,11 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bu məlumatlar başqa istifadəçi tərəfindən yenilənmişdir. Məlumatların bütövlüyünün qorunması üçün yeniden prosese başlamanız gərəkir..
+        ///   Looks up a localized string similar to Tələb olunur.
         /// </summary>
-        public static string ConcurencyEdit {
+        public static string Required {
             get {
-                return ResourceManager.GetString("ConcurencyEdit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Əməliyyat zamanı xəta baş verdi.
-        /// </summary>
-        public static string FatalError {
-            get {
-                return ResourceManager.GetString("FatalError", resourceCulture);
+                return ResourceManager.GetString("Required", resourceCulture);
             }
         }
     }

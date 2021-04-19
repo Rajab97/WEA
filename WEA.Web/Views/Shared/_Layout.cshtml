@@ -45,6 +45,8 @@ License: You must have a valid license purchased only from themeforest(the above
 
     <!--end::Layout Themes-->
     <link rel="shortcut icon" href="~/assets/media/logos/favicon.ico" />
+
+    @(await RenderSectionAsync("Style", false))
 </head>
 
 <!--end::Head-->
@@ -66,8 +68,9 @@ License: You must have a valid license purchased only from themeforest(the above
 
                     <partial name="/Views/Shared/Partials/_header.cshtml" />
                     <!--begin::Content-->
-                    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-                        <partial name="/Views/Shared/Partials/_content.cshtml" >
+                    <div class="content d-flex flex-column flex-column-fluid" style="padding-top:0;" id="kt_content">
+                       <partial name="/Views/Shared/Partials/_subheader.cshtml"/>
+                        @*<partial name="/Views/Shared/Partials/_content.cshtml" >*@
                         @RenderBody()
                     </div>
 
@@ -173,7 +176,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--end::Page Vendors-->
         <!--begin::Page Scripts(used by this page)-->
         <script src="~/assets/js/pages/widgets.js"></script>
-
+        @(await RenderSectionAsync("Scripts",false))
         <!--end::Page Scripts-->
 </body>
 

@@ -24,6 +24,9 @@ using WEA.Web.Helpers.Identity.Authorization;
 using WEA.Web.Helpers.Identity.Authorization.Handlers;
 using WEA.Web.Helpers.Identity.Authorization.Requirements;
 using STA = WEA.Web.Helpers.Statics;
+using WEA.Web.Helpers.Extensions;
+using AutoMapper;
+
 namespace WEA.Web
 {
     public class Startup
@@ -63,12 +66,24 @@ namespace WEA.Web
             {
                 // Cookie settings
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(1);
+                options.ExpireTimeSpan = TimeSpan.FromDays(1);
                 options.LoginPath = "/Account/SignIn";
                 options.AccessDeniedPath = "/Home/Error";
                 options.LogoutPath = "/Account/Logout";
                 //options.SlidingExpiration = true;
             });
+            //.Where(m => m.IsClass && m.IsAssignableFrom(typeof(Profile)))
+            var profiles = this.GetType().Assembly.GetTypes().Where(m => m.IsClass && typeof(Profile).IsAssignableFrom(m));
+            var mapperConfiguration = new AutoMapper.MapperConfiguration(mc => {
+                foreach (var profile in profiles)
+                {
+                    mc.AddProfile(profile);
+                }
+            });
+
+            IMapper mapper = mapperConfiguration.CreateMapper();
+            services.AddSingleton(mapper);
+
             services.AddAuthorization(options => {
                 // [AllowAnonymus] attributu istifade olunmush actionlar istisna olmaqla digerlerinde login olmagi teleb edir
                 options.FallbackPolicy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
@@ -82,6 +97,7 @@ namespace WEA.Web
             services.AddHttpContextAccessor();
             //services.AddScoped<PaymentExpiredAuthFilter>();
             //SeedAdminPW
+            services.AddServiceFacades();
             services.AddControllersWithViews();
         }
         public void ConfigureContainer(ContainerBuilder builder)
@@ -111,6 +127,10 @@ namespace WEA.Web
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                 name: "MyArea",
+                 pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

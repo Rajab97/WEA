@@ -1,0 +1,173 @@
+﻿@model MenuViewModel
+
+<div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!--begin::Card-->
+                <div class="card card-custom gutter-b example example-compact">
+                    <div class="card-header">
+                        <h3 class="card-title">2 Columns Form Layout</h3>
+                    </div>
+                    <form class="form" asp-action="Create" asp-controller="Menu" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    <label asp-for="Title"></label>
+                                    <input asp-for="Title" class="form-control" />
+                                    <span asp-validation-for="Title" class="form-text"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="Name"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="form-text"></span>
+                                </div>
+                              @*  <div class="col-lg-4">
+                                    <label asp-for="ParentId"></label>
+                                    <select asp-for="ParentId" asp-items="Model.Menus" class="form-control" /></select>
+                                    <span asp-validation-for="ParentId" class="form-text"></span>
+                                </div>*@
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    <label asp-for="CssClass"></label>
+                                    <input asp-for="CssClass" class="form-control" />
+                                    <span asp-validation-for="CssClass" class="form-text"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="Icon"></label>
+                                    <input asp-for="Icon" class="form-control" />
+                                    <span asp-validation-for="Icon" class="form-text "></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="Url"></label>
+                                    <input asp-for="Url" class="form-control" />
+                                    <span asp-validation-for="Url" class="form-text"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    <label asp-for="Area"></label>
+                                    <input asp-for="Area" class="form-control" />
+                                    <span asp-validation-for="Area" class="form-text "></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="Controller"></label>
+                                    <input asp-for="Controller" class="form-control" />
+                                    <span asp-validation-for="Controller" class="form-text "></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="Action"></label>
+                                    <input asp-for="Action" class="form-control" />
+                                    <span asp-validation-for="Action" class="form-text "></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <button type="submit" class="btn btn-primary mr-2">@UI.Save</button>
+                                    <button type="submit" class="btn btn-secondary">@UI.Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <!--<script src="~/assets/js/pages/crud/forms/widgets/select2.js"></script>
+    <script>
+        var KTSelect2 = function () {
+            // Private functions
+            var demos = function () {
+                // basic
+                $('#ParentId').select2({
+                    placeholder: "Baş menunu seç"
+                });
+
+                // loading remote data
+
+                function formatRepo(repo) {
+                    console.log(repo);-->
+                    @*if (repo.loading) return repo.text;
+                    var markup = "&lt;div class='select2-result-repository clearfix'&gt;" +
+                        "&lt;div class='select2-result-repository__meta'&gt;" +
+                        "&lt;div class='select2-result-repository__title'&gt;" + repo.full_name + "&lt;/div&gt;";
+                    if (repo.description) {
+                        markup += "&lt;div class='select2-result-repository__description'&gt;" + repo.description + "&lt;/div&gt;";
+                    }
+                    markup += "&lt;div class='select2-result-repository__statistics'&gt;" +
+                        "&lt;div class='select2-result-repository__forks'&gt;&lt;i class='fa fa-flash'&gt;&lt;/i&gt; " + repo.forks_count + " Forks&lt;/div&gt;" +
+                        "&lt;div class='select2-result-repository__stargazers'&gt;&lt;i class='fa fa-star'&gt;&lt;/i&gt; " + repo.stargazers_count + " Stars&lt;/div&gt;" +
+                        "&lt;div class='select2-result-repository__watchers'&gt;&lt;i class='fa fa-eye'&gt;&lt;/i&gt; " + repo.watchers_count + " Watchers&lt;/div&gt;" +
+                        "&lt;/div&gt;" +
+                        "&lt;/div&gt;&lt;/div&gt;";
+                    return markup;*@
+                <!--}
+
+                function formatRepoSelection(repo) {
+                    console.log(repo);
+                    //return repo.full_name || repo.text;
+                }
+
+                $("#ParentId").select2({
+                    placeholder: "Search for git repositories",
+                    allowClear: true,
+                    ajax: {
+                        url: "@Url.Action(nameof(DictionaryController.Menus),DictionaryController.Name,new { area="" })",
+                        dataType: 'json',
+                        delay: 250,
+                        data: function (params) {
+                            return {
+                                q: params.term, // search term
+                                page: params.page
+                            };
+                        },-->
+                      @*  processResults: function (data, params) {
+                            // parse the results into the format expected by Select2
+                            // since we are using custom formatting functions we do not need to
+                            // alter the remote JSON data, except to indicate that infinite
+                            // scrolling can be used
+                            params.page = params.page || 1;
+
+                            return {
+                                results: data.items,
+                                pagination: {
+                                    more: (params.page * 30) & lt; data.total_count
+                                }
+                            };
+                        },*@
+                        <!--cache: true
+                    },
+                    escapeMarkup: function (markup) {
+                        return markup;
+                    }, // let our custom formatter work
+                    minimumInputLength: 1,
+                    templateResult: formatRepo, // omitted for brevity, see the source of this page
+                    templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+                });
+            }
+
+           
+
+            // Public functions
+            return {
+                init: function () {
+                    demos();
+                }
+            };
+        }();
+
+        // Initialization
+        jQuery(document).ready(function () {
+            KTSelect2.init();
+        });-->
+    </script>
+}

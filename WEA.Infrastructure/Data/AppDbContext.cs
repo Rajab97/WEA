@@ -29,6 +29,8 @@ namespace WEA.Infrastructure.Data
         }
 
         public DbSet<Organization> Organizations { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

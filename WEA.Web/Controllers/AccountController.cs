@@ -116,7 +116,7 @@ namespace WEA.Web.Controllers
                 {
                     return Content("Hesabiniz bloklanib");
                 }
-                var result = await _signInManager.PasswordSignInAsync(user, _configuration["SeedAdminPW"], true,false);
+                var result = await _signInManager.PasswordSignInAsync(user, _configuration["SeedAdminPW"],true,false);
                 if (result.Succeeded)
                 {
                     return RedirectToAction(nameof(Index));

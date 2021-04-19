@@ -51,6 +51,8 @@ namespace WEA.Infrastructure
         {
             builder.RegisterType<EfRepository>().As<IRepository>()
                 .InstancePerLifetimeScope();
+            builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>))
+           .InstancePerLifetimeScope();
 
             builder
                 .RegisterType<Mediator>()
