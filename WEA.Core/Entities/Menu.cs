@@ -17,5 +17,7 @@ namespace WEA.Core.Entities
         public string Action { get; set; }
         public Guid? ParentId { get; set; }
         public Menu Parent { get; set; }
+        public bool IsVisible { get; set; }
+        public ICollection<RoleMenu> RoleMenus { get; set; }
     }
 }

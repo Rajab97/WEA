@@ -24,11 +24,12 @@
                                     <input asp-for="Name" class="form-control" />
                                     <span asp-validation-for="Name" class="form-text"></span>
                                 </div>
-                              @*  <div class="col-lg-4">
-                                    <label asp-for="ParentId"></label>
-                                    <select asp-for="ParentId" asp-items="Model.Menus" class="form-control" /></select>
-                                    <span asp-validation-for="ParentId" class="form-text"></span>
-                                </div>*@
+                              
+                                @*  <div class="col-lg-4">
+                            <label asp-for="ParentId"></label>
+                            <select asp-for="ParentId" asp-items="Model.Menus" class="form-control" /></select>
+                            <span asp-validation-for="ParentId" class="form-text"></span>
+                        </div>*@
                             </div>
                             <div class="form-group row">
                                 <div class="col-lg-4">
@@ -82,92 +83,5 @@
 </div>
 
 @section Scripts{
-    <!--<script src="~/assets/js/pages/crud/forms/widgets/select2.js"></script>
-    <script>
-        var KTSelect2 = function () {
-            // Private functions
-            var demos = function () {
-                // basic
-                $('#ParentId').select2({
-                    placeholder: "Baş menunu seç"
-                });
-
-                // loading remote data
-
-                function formatRepo(repo) {
-                    console.log(repo);-->
-                    @*if (repo.loading) return repo.text;
-                    var markup = "&lt;div class='select2-result-repository clearfix'&gt;" +
-                        "&lt;div class='select2-result-repository__meta'&gt;" +
-                        "&lt;div class='select2-result-repository__title'&gt;" + repo.full_name + "&lt;/div&gt;";
-                    if (repo.description) {
-                        markup += "&lt;div class='select2-result-repository__description'&gt;" + repo.description + "&lt;/div&gt;";
-                    }
-                    markup += "&lt;div class='select2-result-repository__statistics'&gt;" +
-                        "&lt;div class='select2-result-repository__forks'&gt;&lt;i class='fa fa-flash'&gt;&lt;/i&gt; " + repo.forks_count + " Forks&lt;/div&gt;" +
-                        "&lt;div class='select2-result-repository__stargazers'&gt;&lt;i class='fa fa-star'&gt;&lt;/i&gt; " + repo.stargazers_count + " Stars&lt;/div&gt;" +
-                        "&lt;div class='select2-result-repository__watchers'&gt;&lt;i class='fa fa-eye'&gt;&lt;/i&gt; " + repo.watchers_count + " Watchers&lt;/div&gt;" +
-                        "&lt;/div&gt;" +
-                        "&lt;/div&gt;&lt;/div&gt;";
-                    return markup;*@
-                <!--}
-
-                function formatRepoSelection(repo) {
-                    console.log(repo);
-                    //return repo.full_name || repo.text;
-                }
-
-                $("#ParentId").select2({
-                    placeholder: "Search for git repositories",
-                    allowClear: true,
-                    ajax: {
-                        url: "@Url.Action(nameof(DictionaryController.Menus),DictionaryController.Name,new { area="" })",
-                        dataType: 'json',
-                        delay: 250,
-                        data: function (params) {
-                            return {
-                                q: params.term, // search term
-                                page: params.page
-                            };
-                        },-->
-                      @*  processResults: function (data, params) {
-                            // parse the results into the format expected by Select2
-                            // since we are using custom formatting functions we do not need to
-                            // alter the remote JSON data, except to indicate that infinite
-                            // scrolling can be used
-                            params.page = params.page || 1;
-
-                            return {
-                                results: data.items,
-                                pagination: {
-                                    more: (params.page * 30) & lt; data.total_count
-                                }
-                            };
-                        },*@
-                        <!--cache: true
-                    },
-                    escapeMarkup: function (markup) {
-                        return markup;
-                    }, // let our custom formatter work
-                    minimumInputLength: 1,
-                    templateResult: formatRepo, // omitted for brevity, see the source of this page
-                    templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
-                });
-            }
-
-           
-
-            // Public functions
-            return {
-                init: function () {
-                    demos();
-                }
-            };
-        }();
-
-        // Initialization
-        jQuery(document).ready(function () {
-            KTSelect2.init();
-        });-->
-    </script>
+   
 }

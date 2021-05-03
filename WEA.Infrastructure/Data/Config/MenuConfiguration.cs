@@ -21,6 +21,7 @@ namespace WEA.Infrastructure.Data.Config
             builder.Property(m => m.Area).HasMaxLength(100);
             builder.Property(m => m.Controller).HasMaxLength(100).IsRequired(true);
             builder.HasIndex(m => new { m.Area, m.Controller, m.Action });
+            builder.Property(m => m.IsVisible).HasDefaultValue(true);
         }
     }
 }

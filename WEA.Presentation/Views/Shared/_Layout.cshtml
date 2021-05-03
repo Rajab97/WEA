@@ -1,0 +1,285 @@
+
+@using WEA.Presentation.ViewComponents
+@using WEA.Presentation.Controllers
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>WEA_Presentation</title>
+    <link rel="canonical" href="https://keenthemes.com/metronic" />
+
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+
+
+
+    <!--end::Layout Themes-->
+    <link rel="shortcut icon" href="~/assets/media/logos/favicon.ico" />
+
+
+
+    @* Uncomment to use the HtmlEditor control *@
+    @* <script src="https://unpkg.com/devextreme-quill/dist/dx-quill.min.js"></script> *@
+
+    <link rel="stylesheet" href="~/css/vendor.css" asp-append-version="true" />
+
+    <!--end::Fonts-->
+    <!--begin::Page Vendors Styles(used by this page)-->
+    <link href="~/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+
+    <!--end::Page Vendors Styles-->
+    <!--begin::Global Theme Styles(used by all pages)-->
+    <link href="~/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/plugins/custom/prismjs/prismjs.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+
+    <!--end::Global Theme Styles-->
+    <!--begin::Layout Themes(used by all pages)-->
+    <link href="~/assets/css/themes/layout/header/base/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/header/menu/dark.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/brand/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/themes/layout/aside/light.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/lib/three-dots.min.css" rel="stylesheet" type="text/css"  />
+    <link rel="stylesheet" href="~/css/Site.css" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <!--end::Global Config-->
+    <!--begin::Global Theme Bundle(used by all pages)-->
+    <script src="~/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="~/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+    <script src="~/assets/js/scripts.bundle.js"></script>
+
+    <!--end::Global Theme Bundle-->
+    <!--begin::Page Vendors(used by this page)-->
+    <script src="~/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+
+    <!--end::Page Vendors-->
+    <!--begin::Page Scripts(used by this page)-->
+    <script src="~/assets/js/pages/widgets.js"></script>
+
+    @* <script src="https://unpkg.com/devextreme-quill/dist/dx-quill.min.js"></script> *@
+
+
+    <script src="~/js/vendor.js" asp-append-version="true"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/assets/js/pages/features/miscellaneous/sweetalert2.js"></script>
+
+</head>
+
+<!--end::Head-->
+<!--begin::Body-->
+<body id="kt_body" class="page-loading-enabled page-loading header-fixed header-mobile-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
+
+    <partial name="/Views/Shared/Partials/_page-loader.cshtml">
+
+        <!--begin::Main-->
+        <partial name="/Views/Shared/Partials/_header-mobile.cshtml" />
+        <div class="d-flex flex-column flex-root">
+
+            <!--begin::Page-->
+            <div class="d-flex flex-row flex-column-fluid page">
+
+                @await Component.InvokeAsync(nameof(Aside))
+                <!--begin::Wrapper-->
+                <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+
+                    <partial name="/Views/Shared/Partials/_header.cshtml" />
+                    <!--begin::Content-->
+                    <div class="content d-flex flex-column flex-column-fluid" style="padding-top:0;" id="kt_content">
+                        <partial name="/Views/Shared/Partials/_subheader.cshtml" />
+                        @*<partial name="/Views/Shared/Partials/_content.cshtml" >*@
+                        @RenderBody()
+                    </div>
+
+                    <!--end::Content-->
+                    <partial name="/Views/Shared/Partials/_footer.cshtml" />
+                </div>
+
+                <!--end::Wrapper-->
+            </div>
+
+            <!--end::Page-->
+        </div>
+
+        <!--end::Main-->
+        <!--[html-partial:include:{"file":"partials/_extras/offcanvas/quick-user.html"}]/-->
+        <partial name="/Views/Shared/Partials/Extras/_quick-user.cshtml" />
+        <!--[html-partial:include:{"file":"partials/_extras/offcanvas/quick-cart.html"}]/-->
+        <partial name="/Views/Shared/Partials/Extras/_quick-cart.cshtml" />
+        <!--[html-partial:include:{"file":"partials/_extras/offcanvas/quick-panel.html"}]/-->
+        <partial name="/Views/Shared/Partials/Extras/_quick-panel.cshtml" />
+        <!--[html-partial:include:{"file":"partials/_extras/scrolltop.html"}]/-->
+        <partial name="/Views/Shared/Partials/Extras/_scroltop.cshtml" />
+        <!--[html-partial:include:{"file":"partials/_extras/toolbar.html"}]/-->
+        <partial name="/Views/Shared/Partials/Extras/_toolbar.cshtml" />
+        <!--[html-partial:include:{"file":"partials/_extras/offcanvas/demo-panel.html"}]/-->
+        <partial name="/Views/Shared/Partials/Extras/_demo-panel.cshtml" />
+
+
+        <div class="error-alerts">
+
+        </div>
+        <!--<div class="snippet d-flex align-items-center justify-content-center">
+            <div class="stage">-->
+                @*falling*@
+                @*bricks*@
+                @*spin*@
+                @*flashing*@
+                <!--<div class="dot-falling"></div>
+            </div>
+        </div>-->
+        <script>
+            var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+        </script>
+
+        <!--begin::Global Config(global config for global JS scripts)-->
+        <script>
+            var KTAppSettings = {
+                "breakpoints": {
+                    "sm": 576,
+                    "md": 768,
+                    "lg": 992,
+                    "xl": 1200,
+                    "xxl": 1400
+                },
+                "colors": {
+                    "theme": {
+                        "base": {
+                            "white": "#ffffff",
+                            "primary": "#3699FF",
+                            "secondary": "#E5EAEE",
+                            "success": "#1BC5BD",
+                            "info": "#8950FC",
+                            "warning": "#FFA800",
+                            "danger": "#F64E60",
+                            "light": "#E4E6EF",
+                            "dark": "#181C32"
+                        },
+                        "light": {
+                            "white": "#ffffff",
+                            "primary": "#E1F0FF",
+                            "secondary": "#EBEDF3",
+                            "success": "#C9F7F5",
+                            "info": "#EEE5FF",
+                            "warning": "#FFF4DE",
+                            "danger": "#FFE2E5",
+                            "light": "#F3F6F9",
+                            "dark": "#D6D6E0"
+                        },
+                        "inverse": {
+                            "white": "#ffffff",
+                            "primary": "#ffffff",
+                            "secondary": "#3F4254",
+                            "success": "#ffffff",
+                            "info": "#ffffff",
+                            "warning": "#ffffff",
+                            "danger": "#ffffff",
+                            "light": "#464E5F",
+                            "dark": "#ffffff"
+                        }
+                    },
+                    "gray": {
+                        "gray-100": "#F3F6F9",
+                        "gray-200": "#EBEDF3",
+                        "gray-300": "#E4E6EF",
+                        "gray-400": "#D1D3E0",
+                        "gray-500": "#B5B5C3",
+                        "gray-600": "#7E8299",
+                        "gray-700": "#5E6278",
+                        "gray-800": "#3F4254",
+                        "gray-900": "#181C32"
+                    }
+                },
+                "font-family": "Poppins"
+            };
+        </script>
+        <script src="~/js/dtGrid.js"></script>
+        <script src="~/js/helper.js"></script>
+        <script>
+
+
+            $(document).ajaxError(function (a, error) {
+                //util.loader(false);
+                $(".alert-custom.hide").remove();
+                if (typeof error.responseJSON === 'undefined') {
+                    if (error.status == 403) {
+                        window.location.href = "@Url.Action(nameof(HomeController.NotAuthorize),HomeController.Name,new { Area="" })";
+                    }
+                }
+                else {
+                    var messages = error.responseJSON;
+                    console.error(messages);
+                    for (var i = 0; i < messages.length; i++) {
+                        var randormId = util.guidGenerate();
+                        console.log(randormId);
+                        $(".error-alerts").append(`<div id="${randormId}" class="alert alert-custom alert-notice alert-light-danger fade mb-5" data-delay="4000" role="alert"><div class= "alert-icon"><i class="flaticon-warning"></i></div><div class="alert-text">${messages[i]}</div><div class="alert-close"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"><i class="ki ki-close"></i></span></button></div></div>`);
+                        $(`#${randormId}`).toast("show");
+                    }
+
+
+                   @* if ($(".error-div").length > 0)
+                        $(".error-div").html("<br /><div class=\"alert alert-danger\">" + messages[0] + "</div>");
+
+                    $.each(messages, function (key, value) {
+                        toastr.error(value);
+                    });*@
+                }
+            });
+
+            function openActiveMenuInNav() {
+                var activeMenu = $(".aside-selected");
+                var parents = $(activeMenu).parents(".menu-item");
+                for (var i = 0; i < parents.length; i++) {
+                    $(parents[i]).addClass("menu-item-open menu-item-here");
+                }
+                console.log(parents);
+            }
+
+            function localizeDevExtreme() {
+                @{
+                    var applicationPath = new Uri(String.Format("{0}://{1}", Context.Request.Scheme, Context.Request.Host));
+                }
+                var base = '@applicationPath'
+                if (base === '/') base = '';
+                var globalizePromise = $.when(
+                    $.getJSON(base +"localication/cldr-core/supplemental/likelySubtags.json"),
+                    $.getJSON(base +"localication/cldr-numbers-full/main/az/numbers.json"),
+                    $.getJSON(base +"localication/cldr-core/supplemental/numberingSystems.json"),
+                    $.getJSON(base +"localication/cldr-dates-full/main/az/ca-gregorian.json"),
+                    $.getJSON(base +"localication/cldr-dates-full/main/az/timeZoneNames.json"),
+                    $.getJSON(base +"localication/cldr-core/supplemental/timeData.json"),
+                    $.getJSON(base +"localication/cldr-core/supplemental/weekData.json"),
+                    $.getJSON(base +"localication/cldr-numbers-full/main/az/currencies.json"),
+                    $.getJSON(base +"localication/cldr-core/supplemental/currencyData.json")
+                ).then(function () {
+                    return [].slice.apply(arguments, [0]).map(function (result) {
+                        return result[0];
+                    });
+                }).then(Globalize.load).then(function () { Globalize.locale("az-AZ"); });
+
+                globalizePromise.done(function () {
+
+                });
+            }
+            $(function () {
+                //DevExpress.localization.locale(locale);
+                localizeDevExtreme();
+                openActiveMenuInNav();
+            });
+        </script>
+        @(await RenderSectionAsync("Scripts",false))
+        <!--end::Page Scripts-->
+</body>
+
+<!--end::Body-->
+
+</html>

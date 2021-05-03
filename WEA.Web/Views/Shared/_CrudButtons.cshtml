@@ -1,0 +1,21 @@
+﻿@using WEA.SharedKernel.Resources
+@{
+    var controllerName = ViewContext.RouteData.Values["controller"].ToString();
+}
+
+<div class="row">
+    <div class="col-sm-12 d-flex justify-content-between align-items-center">
+        <div id="crudBtn">
+            <button type="button" id="btnAdd" class="btn btn-sm btn-default" onclick="add();">@UI.AddNew</button>
+            <button type="button" id="btnEdit" class="btn btn-sm btn-default" onclick="edit();" disabled>@UI.Edit</button>
+            <button type="button" id="btnRemove" class="btn btn-sm btn-danger" onclick="remove();" disabled>@UI.Remove</button>
+            <button type="button" id="btnRefresh" class="btn btn-sm btn-primary" onclick="dtGrid.reload();"><i class="fa fa-refresh"></i> @UI.Reload</button>
+            <button type="button" id="btnFilter" class="btn btn-sm btn-warning" onclick="dtGrid.filter()"><i class="fa fa-filter"></i> @UI.Filter</button>
+           @* <button type="button" id="btnDetails" disabled class="btn btn-sm btn-dark" onclick="info()"><i class="fa fa-info"></i> @UI.Infoo</button>
+            <button type="button" id="btnPrint" class="btn btn-sm btn-default" onclick="printItem();" disabled><i class="fa fa-print"></i> @UI.Print</button>
+            <button type="button" id="btnExport" class="btn btn-sm btn-success" onclick="dtGrid.exportToExcel();"><i class="fa fa-print"></i> @UI.ExportToExcel</button>
+*@
+        </div>
+        <div id="secondaryBtn"></div>
+    </div>
+</div>

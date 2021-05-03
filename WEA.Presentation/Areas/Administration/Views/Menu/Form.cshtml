@@ -1,0 +1,126 @@
+﻿@model MenuViewModel
+
+<div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!--begin::Card-->
+                <div class="card card-custom gutter-b example example-compact">
+                    <div class="card-header">
+                        <h3 class="card-title">2 Columns Form Layout</h3>
+                    </div>
+                    <form class="form" asp-action="Save" asp-controller="Menu" method="post"
+                           data-ajax="true"
+                              data-ajax-method="POST"
+                              data-ajax-begin="onBegin"
+                              data-ajax-success="onSuccess"
+                              data-ajax-failure="onFailure" style="position:relative;">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="Version" />
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    <label asp-for="Title"></label>
+                                    <input asp-for="Title" class="form-control" />
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="Name"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="ParentId"></label>
+                                    @Html.DevExtreme().SelectBoxFor(m => m.ParentId).DisplayExpr("Text").ValueExpr("Id").DataSource(m => m.Mvc().Area("").Controller(DictionaryController.Name).LoadAction(nameof(DictionaryController.Menus)).Key("Id"))
+                                    <span asp-validation-for="ParentId" class="text-danger"></span>
+                                </div>
+                                @*  <div class="col-lg-4">
+                    <label asp-for="ParentId"></label>
+                    <select asp-for="ParentId" asp-items="Model.Menus" class="form-control" /></select>
+                    <span asp-validation-for="ParentId" class="form-text"></span>
+                </div>*@
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    <label asp-for="CssClass"></label>
+                                    <input asp-for="CssClass" class="form-control" />
+                                    <span asp-validation-for="CssClass" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="Icon"></label>
+                                    <input asp-for="Icon" class="form-control" />
+                                    <span asp-validation-for="Icon" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="Url"></label>
+                                    <input asp-for="Url" readonly class="form-control" />
+                                    <span asp-validation-for="Url" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    <label asp-for="Area"></label>
+                                    <input asp-for="Area" class="form-control" />
+                                    <span asp-validation-for="Area" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="Controller"></label>
+                                    <input asp-for="Controller" class="form-control" />
+                                    <span asp-validation-for="Controller" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="Action"></label>
+                                    <input asp-for="Action" class="form-control" />
+                                    <span asp-validation-for="Action" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    @(Html.DevExtreme().Button()
+                                    .ID("button")
+                                    .Text(UI.Save)
+                                    .ElementAttr("class", "btn btn-primary mr-2")
+                                    .UseSubmitBehavior(true)
+                                )
+                                    <button type="submit" class="btn btn-secondary">@UI.Cancel</button>
+                                </div>
+                                <div class="col-lg-6 d-flex justify-content-end">
+                                    <div class="col-lg-12 d-flex justify-content-end align-items-center" style="padding-top:7.5px;padding-bottom:7.5px;">
+                                            <label asp-for="IsVisible" class="mr-3 mb-0"></label>
+                                        <div>
+                                            <span class="switch switch-outline switch-icon switch-success">
+                                                <label>
+                                                    <input asp-for="IsVisible" type="checkbox" />
+                                                    <span></span>
+                                                </label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        function onBegin() {
+            util.loading(true, "form");
+       }
+        function onSuccess(data) {
+            util.loading(true, "form");
+           window.location.href = "@Url.Action(nameof(MenuController.Index),MenuController.Name)";
+       }
+        function onFailure(data) {
+            util.loading(true, "form");
+       }
+    </script>
+}

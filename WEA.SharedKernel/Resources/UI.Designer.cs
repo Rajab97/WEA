@@ -61,6 +61,15 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hesab quraşdırmaları və daha artıq.
+        /// </summary>
+        public static string AccountSettingAndMore {
+            get {
+                return ResourceManager.GetString("AccountSettingAndMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Action.
         /// </summary>
         public static string Action {
@@ -70,11 +79,65 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Yeni.
+        /// </summary>
+        public static string AddNew {
+            get {
+                return ResourceManager.GetString("AddNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yeni istifadəçi əlavə et.
+        /// </summary>
+        public static string AddNewUser {
+            get {
+                return ResourceManager.GetString("AddNewUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ünvan.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Area.
         /// </summary>
         public static string Area {
             get {
                 return ResourceManager.GetString("Area", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Əminsiniz ?.
+        /// </summary>
+        public static string AreYouSure {
+            get {
+                return ResourceManager.GetString("AreYouSure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Məlumatı silməyə əminsiniz.
+        /// </summary>
+        public static string AYSDeletInfo {
+            get {
+                return ResourceManager.GetString("AYSDeletInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Baş inzibatçılıq.
+        /// </summary>
+        public static string BaseCatalog {
+            get {
+                return ResourceManager.GetString("BaseCatalog", resourceCulture);
             }
         }
         
@@ -97,11 +160,83 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Yenisini yaratma hüququ.
+        /// </summary>
+        public static string CanCreate {
+            get {
+                return ResourceManager.GetString("CanCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Məlumatı silmə hüququ.
+        /// </summary>
+        public static string CanDelete {
+            get {
+                return ResourceManager.GetString("CanDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Məlumata düzəliş etmə hüququ.
+        /// </summary>
+        public static string CanEdit {
+            get {
+                return ResourceManager.GetString("CanEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Şifrəni yenilə.
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hesab şifrənizi yeniləyin.
+        /// </summary>
+        public static string ChangeYourAccountPassword {
+            get {
+                return ResourceManager.GetString("ChangeYourAccountPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Seçin.
+        /// </summary>
+        public static string Choose {
+            get {
+                return ResourceManager.GetString("Choose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Şifrənin təkrarı.
+        /// </summary>
+        public static string ConfirmPassowrd {
+            get {
+                return ResourceManager.GetString("ConfirmPassowrd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Controller.
         /// </summary>
         public static string Controller {
             get {
                 return ResourceManager.GetString("Controller", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yenisini əlavə et.
+        /// </summary>
+        public static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
             }
         }
         
@@ -115,11 +250,146 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hal hazırki şifrə.
+        /// </summary>
+        public static string CurrentPassword {
+            get {
+                return ResourceManager.GetString("CurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Doğum tarixi.
+        /// </summary>
+        public static string DateOfBith {
+            get {
+                return ResourceManager.GetString("DateOfBith", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Düzəliş et.
+        /// </summary>
+        public static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to düzəliş et.
+        /// </summary>
+        public static string EditLower {
+            get {
+                return ResourceManager.GetString("EditLower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rolda düzəliş et.
+        /// </summary>
+        public static string EditRole {
+            get {
+                return ResourceManager.GetString("EditRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Şifrənizi yeniləmək üçün istifadəçi adınızı daxil edin.
+        /// </summary>
+        public static string EnterEmailForRecovery {
+            get {
+                return ResourceManager.GetString("EnterEmailForRecovery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Axtar.
+        /// </summary>
+        public static string Filter {
+            get {
+                return ResourceManager.GetString("Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Şifrəni unutmusuz ?.
+        /// </summary>
+        public static string ForgotePassword {
+            get {
+                return ResourceManager.GetString("ForgotePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to İkon.
         /// </summary>
         public static string Icon {
             get {
                 return ResourceManager.GetString("Icon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adminlik statusu.
+        /// </summary>
+        public static string IsSuperAdmin {
+            get {
+                return ResourceManager.GetString("IsSuperAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Görülmə statusu.
+        /// </summary>
+        public static string IsVisible {
+            get {
+                return ResourceManager.GetString("IsVisible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Soyad.
+        /// </summary>
+        public static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Menyunun adı.
+        /// </summary>
+        public static string MenuName {
+            get {
+                return ResourceManager.GetString("MenuName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Menyular.
+        /// </summary>
+        public static string Menus {
+            get {
+                return ResourceManager.GetString("Menus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mənim profilim.
+        /// </summary>
+        public static string MyProfile {
+            get {
+                return ResourceManager.GetString("MyProfile", resourceCulture);
             }
         }
         
@@ -133,11 +403,155 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Yeni şifrə.
+        /// </summary>
+        public static string NewPasswrod {
+            get {
+                return ResourceManager.GetString("NewPasswrod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yeni rol əlavə et.
+        /// </summary>
+        public static string NewRole {
+            get {
+                return ResourceManager.GetString("NewRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xeyir.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ata adı.
+        /// </summary>
+        public static string Patronymic {
+            get {
+                return ResourceManager.GetString("Patronymic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telofon nömrəsi.
+        /// </summary>
+        public static string PhoneNumber {
+            get {
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Əməliyyat zamanı xəta baş verdi.
+        /// </summary>
+        public static string ProcessFailed {
+            get {
+                return ResourceManager.GetString("ProcessFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Əməliyyat uğurla sonlandı.
+        /// </summary>
+        public static string ProcessSucced {
+            get {
+                return ResourceManager.GetString("ProcessSucced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yenilə.
+        /// </summary>
+        public static string Reload {
+            get {
+                return ResourceManager.GetString("Reload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Məlumatları yaddaşda saxla.
+        /// </summary>
+        public static string RememberMe {
+            get {
+                return ResourceManager.GetString("RememberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sil.
+        /// </summary>
+        public static string Remove {
+            get {
+                return ResourceManager.GetString("Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Müraciət göndərin.
+        /// </summary>
+        public static string Request {
+            get {
+                return ResourceManager.GetString("Request", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Menyu icazələri.
+        /// </summary>
+        public static string RoleMenu {
+            get {
+                return ResourceManager.GetString("RoleMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rolun adı.
+        /// </summary>
+        public static string RoleName {
+            get {
+                return ResourceManager.GetString("RoleName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rollar.
+        /// </summary>
+        public static string Roles {
+            get {
+                return ResourceManager.GetString("Roles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yadda saxla.
         /// </summary>
         public static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daxil ol.
+        /// </summary>
+        public static string SignIn {
+            get {
+                return ResourceManager.GetString("SignIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Çıxış et.
+        /// </summary>
+        public static string SignOut {
+            get {
+                return ResourceManager.GetString("SignOut", resourceCulture);
             }
         }
         
@@ -156,6 +570,51 @@ namespace WEA.SharedKernel.Resources {
         public static string URL {
             get {
                 return ResourceManager.GetString("URL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İstifadəçi adı.
+        /// </summary>
+        public static string UserName {
+            get {
+                return ResourceManager.GetString("UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İstifadəçi şifrəsi.
+        /// </summary>
+        public static string UserPassword {
+            get {
+                return ResourceManager.GetString("UserPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İstifadəçilər.
+        /// </summary>
+        public static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İş nömrəsi.
+        /// </summary>
+        public static string WorkNumber {
+            get {
+                return ResourceManager.GetString("WorkNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bəli.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

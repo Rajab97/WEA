@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DevExtreme.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,29 +29,38 @@ namespace WEA.Web.Areas.Administration.Controllers
             return View();
         }
 
+        public IActionResult GetData(DataSourceLoadOptions options)
+        {
+            var result = _facade.GetData();
+            if (result.IsSucceed)
+                return Load(result.Data,options);
+            return AjaxFailureResult(result);
+        }
         [HttpGet]
         public IActionResult Create()
         {
             var model = new MenuViewModel();
-            IntializeViewModel(model);
             return View("Form", model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(MenuViewModel model)
+        public async Task<IActionResult> Create(MenuViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View("Form", model);
             }
-            var resulr = _facade.Save(model);
-            return Json("Ok");
+            var result = await _facade.SaveAsync(model);
+            if (result.IsSucceed)
+            {
+                return Json("Ok");
+            }
+            return AjaxFailureResult(result);
         }
-
-
-        private void IntializeViewModel(MenuViewModel model)
+       /* [AcceptVerbs("GET","POST")]
+        public IActionResult CheckForValidUrl(string controller , string action)
         {
-            model.Menus = _dictionary.Menus();
-        }
+           return Json(true);
+        }*/
     }
 }

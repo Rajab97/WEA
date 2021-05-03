@@ -46,7 +46,54 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--end::Layout Themes-->
     <link rel="shortcut icon" href="~/assets/media/logos/favicon.ico" />
 
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    @* Uncomment to use the HtmlEditor control *@
+    <link rel="stylesheet" href="~/css/Site.css" />
+    <link rel="stylesheet" href="~/lib/devExtreme/css/dx.common.css" />
+    <link rel="stylesheet" href="~/lib/devExtreme/css/dx.light.css" />
     @(await RenderSectionAsync("Style", false))
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <!--end::Global Config-->
+    <!--begin::Global Theme Bundle(used by all pages)-->
+    <script src="~/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="~/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
+    <script src="~/assets/js/scripts.bundle.js"></script>
+
+    <!--end::Global Theme Bundle-->
+    <!--begin::Page Vendors(used by this page)-->
+    <script src="~/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
+
+    <!--end::Page Vendors-->
+    <!--begin::Page Scripts(used by this page)-->
+    <script src="~/assets/js/pages/widgets.js"></script>
+
+    @* <script src="https://unpkg.com/devextreme-quill/dist/dx-quill.min.js"></script> *@
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <script src="~/lib/devExtreme/js/cldr.min.js"></script>
+    <script src="~/lib/devExtreme/js/cldr/event.min.js"></script>
+    <script src="~/lib/devExtreme/js/cldr/supplemental.min.js"></script>
+    <script src="~/lib/devExtreme/js/cldr/unresolved.min.js"></script>
+    <script src="~/lib/devExtreme/js/globalize.js"></script>
+    <script src="~/lib/devExtreme/js/globalize/message.min.js"></script>
+    <script src="~/lib/devExtreme/js/globalize/number.min.js"></script>
+    <script src="~/lib/devExtreme/js/globalize/currency.min.js"></script>
+    <script src="~/lib/devExtreme/js/globalize/date.js"></script>
+    <script src="~/lib/devExtreme/js/jszip.js"></script>
+    <script src="~/lib/devExtreme/js/dx.all.js"></script>
+    <script src="~/lib/devExtreme/js/aspnet/dx.aspnet.data.js"></script>
+    <script src="~/lib/devExtreme/js/aspnet/dx.aspnet.mvc.js"></script>
+    <script src="~/lib/devExtreme/js/localization/dx.messages.az.js"></script>
+    <script src="~/lib/devExtreme/js/localization/dx.messages.en.js"></script>
+    <script src="~/lib/devExtreme/js/localization/dx.messages.ru.js"></script>
+
+    <script src="~/js/dtGrid.js"></script>
+
 </head>
 
 <!--end::Head-->
@@ -69,7 +116,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <partial name="/Views/Shared/Partials/_header.cshtml" />
                     <!--begin::Content-->
                     <div class="content d-flex flex-column flex-column-fluid" style="padding-top:0;" id="kt_content">
-                       <partial name="/Views/Shared/Partials/_subheader.cshtml"/>
+                        <partial name="/Views/Shared/Partials/_subheader.cshtml" />
                         @*<partial name="/Views/Shared/Partials/_content.cshtml" >*@
                         @RenderBody()
                     </div>
@@ -162,20 +209,6 @@ License: You must have a valid license purchased only from themeforest(the above
                 "font-family": "Poppins"
             };
         </script>
-
-        <!--end::Global Config-->
-        <!--begin::Global Theme Bundle(used by all pages)-->
-        <script src="~/assets/plugins/global/plugins.bundle.js"></script>
-        <script src="~/assets/plugins/custom/prismjs/prismjs.bundle.js"></script>
-        <script src="~/assets/js/scripts.bundle.js"></script>
-
-        <!--end::Global Theme Bundle-->
-        <!--begin::Page Vendors(used by this page)-->
-        <script src="~/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js"></script>
-
-        <!--end::Page Vendors-->
-        <!--begin::Page Scripts(used by this page)-->
-        <script src="~/assets/js/pages/widgets.js"></script>
         @(await RenderSectionAsync("Scripts",false))
         <!--end::Page Scripts-->
 </body>

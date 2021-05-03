@@ -117,11 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountSettingAndMore" xml:space="preserve">
+    <value>Hesab quraşdırmaları və daha artıq</value>
+  </data>
   <data name="Action" xml:space="preserve">
     <value>Action</value>
   </data>
+  <data name="AddNew" xml:space="preserve">
+    <value>Yeni</value>
+  </data>
+  <data name="AddNewUser" xml:space="preserve">
+    <value>Yeni istifadəçi əlavə et</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Ünvan</value>
+  </data>
   <data name="Area" xml:space="preserve">
     <value>Area</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Əminsiniz ?</value>
+  </data>
+  <data name="AYSDeletInfo" xml:space="preserve">
+    <value>Məlumatı silməyə əminsiniz</value>
+  </data>
+  <data name="BaseCatalog" xml:space="preserve">
+    <value>Baş inzibatçılıq</value>
   </data>
   <data name="BaseMenu" xml:space="preserve">
     <value>Baş menu</value>
@@ -129,25 +150,157 @@
   <data name="Cancel" xml:space="preserve">
     <value>İmtina et</value>
   </data>
+  <data name="CanCreate" xml:space="preserve">
+    <value>Yenisini yaratma hüququ</value>
+  </data>
+  <data name="CanDelete" xml:space="preserve">
+    <value>Məlumatı silmə hüququ</value>
+  </data>
+  <data name="CanEdit" xml:space="preserve">
+    <value>Məlumata düzəliş etmə hüququ</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Şifrəni yenilə</value>
+  </data>
+  <data name="ChangeYourAccountPassword" xml:space="preserve">
+    <value>Hesab şifrənizi yeniləyin</value>
+  </data>
+  <data name="Choose" xml:space="preserve">
+    <value>Seçin</value>
+  </data>
+  <data name="ConfirmPassowrd" xml:space="preserve">
+    <value>Şifrənin təkrarı</value>
+  </data>
   <data name="Controller" xml:space="preserve">
     <value>Controller</value>
+  </data>
+  <data name="Create" xml:space="preserve">
+    <value>Yenisini əlavə et</value>
   </data>
   <data name="Css" xml:space="preserve">
     <value>Css class</value>
   </data>
+  <data name="CurrentPassword" xml:space="preserve">
+    <value>Hal hazırki şifrə</value>
+  </data>
+  <data name="DateOfBith" xml:space="preserve">
+    <value>Doğum tarixi</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Düzəliş et</value>
+  </data>
+  <data name="EditLower" xml:space="preserve">
+    <value>düzəliş et</value>
+  </data>
+  <data name="EditRole" xml:space="preserve">
+    <value>Rolda düzəliş et</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EnterEmailForRecovery" xml:space="preserve">
+    <value>Şifrənizi yeniləmək üçün istifadəçi adınızı daxil edin</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Axtar</value>
+  </data>
+  <data name="ForgotePassword" xml:space="preserve">
+    <value>Şifrəni unutmusuz ?</value>
+  </data>
   <data name="Icon" xml:space="preserve">
     <value>İkon</value>
+  </data>
+  <data name="IsSuperAdmin" xml:space="preserve">
+    <value>Adminlik statusu</value>
+  </data>
+  <data name="IsVisible" xml:space="preserve">
+    <value>Görülmə statusu</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Soyad</value>
+  </data>
+  <data name="MenuName" xml:space="preserve">
+    <value>Menyunun adı</value>
+  </data>
+  <data name="Menus" xml:space="preserve">
+    <value>Menyular</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>Mənim profilim</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>Ad</value>
   </data>
+  <data name="NewPasswrod" xml:space="preserve">
+    <value>Yeni şifrə</value>
+  </data>
+  <data name="NewRole" xml:space="preserve">
+    <value>Yeni rol əlavə et</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Xeyir</value>
+  </data>
+  <data name="Patronymic" xml:space="preserve">
+    <value>Ata adı</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Telofon nömrəsi</value>
+  </data>
+  <data name="ProcessFailed" xml:space="preserve">
+    <value>Əməliyyat zamanı xəta baş verdi</value>
+  </data>
+  <data name="ProcessSucced" xml:space="preserve">
+    <value>Əməliyyat uğurla sonlandı</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Yenilə</value>
+  </data>
+  <data name="RememberMe" xml:space="preserve">
+    <value>Məlumatları yaddaşda saxla</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>Müraciət göndərin</value>
+  </data>
+  <data name="RoleMenu" xml:space="preserve">
+    <value>Menyu icazələri</value>
+  </data>
+  <data name="RoleName" xml:space="preserve">
+    <value>Rolun adı</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Rollar</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Yadda saxla</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Daxil ol</value>
+  </data>
+  <data name="SignOut" xml:space="preserve">
+    <value>Çıxış et</value>
   </data>
   <data name="Title" xml:space="preserve">
     <value>Başlığ</value>
   </data>
   <data name="URL" xml:space="preserve">
     <value>Link</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>İstifadəçi adı</value>
+  </data>
+  <data name="UserPassword" xml:space="preserve">
+    <value>İstifadəçi şifrəsi</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>İstifadəçilər</value>
+  </data>
+  <data name="WorkNumber" xml:space="preserve">
+    <value>İş nömrəsi</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Bəli</value>
   </data>
 </root>

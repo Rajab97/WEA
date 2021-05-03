@@ -70,11 +70,209 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Bilinməyən bir xəta baş verdi.
+        /// </summary>
+        public static string DefaultError {
+            get {
+                return ResourceManager.GetString("DefaultError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email artıq mövcuddur.
+        /// </summary>
+        public static string DuplicateEmail {
+            get {
+                return ResourceManager.GetString("DuplicateEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İstifadəçi adı artıq istifadə olunur.
+        /// </summary>
+        public static string DuplicateName {
+            get {
+                return ResourceManager.GetString("DuplicateName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email təsdiqlənməsi zamanı xəta baş verdi.
+        /// </summary>
+        public static string EmailConfirmationEx {
+            get {
+                return ResourceManager.GetString("EmailConfirmationEx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Emailiniz hələ təsdiqlənməyib.
+        /// </summary>
+        public static string EmailNotConfirmed {
+            get {
+                return ResourceManager.GetString("EmailNotConfirmed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Əməliyyat zamanı xəta baş verdi.
         /// </summary>
         public static string FatalError {
             get {
                 return ResourceManager.GetString("FatalError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email formatı düzgün deyil.
+        /// </summary>
+        public static string InvalidEmail {
+            get {
+                return ResourceManager.GetString("InvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yenidən müraciət etməyiniz xahiş olunur.
+        /// </summary>
+        public static string InvalidToken {
+            get {
+                return ResourceManager.GetString("InvalidToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İstifadəçi adı yalnız hərf və rəqəmlərdən ibarət ola bilər.
+        /// </summary>
+        public static string InvalidUserName {
+            get {
+                return ResourceManager.GetString("InvalidUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Axtardığınız səhifə tapılmadı.
+        /// </summary>
+        public static string PageNotFound {
+            get {
+                return ResourceManager.GetString("PageNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yeni şifrə təkrarı ilə eyni deyil.
+        /// </summary>
+        public static string PasswordAndConfirmPasswordNotSame {
+            get {
+                return ResourceManager.GetString("PasswordAndConfirmPasswordNotSame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Şifrə düzgün daxil edilməyib.
+        /// </summary>
+        public static string PasswordMismatch {
+            get {
+                return ResourceManager.GetString("PasswordMismatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Şifrədə ən azı bir rəqəm istifadə olunmalıdır.
+        /// </summary>
+        public static string PasswordRequiresDigit {
+            get {
+                return ResourceManager.GetString("PasswordRequiresDigit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Şifrədə ən azı bir kiçik hərf istifadə olunmalıdır.
+        /// </summary>
+        public static string PasswordRequiresLower {
+            get {
+                return ResourceManager.GetString("PasswordRequiresLower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Şifrədə ən azı bir böyük hərf istifadə olunmalıdır.
+        /// </summary>
+        public static string PasswordRequiresUpper {
+            get {
+                return ResourceManager.GetString("PasswordRequiresUpper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Şifrə uzunluğu qısadır.
+        /// </summary>
+        public static string PasswordTooShort {
+            get {
+                return ResourceManager.GetString("PasswordTooShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sizin bu səhifəyə daxil olma icazəniz yoxdur.
+        /// </summary>
+        public static string UserAccessToThisPage {
+            get {
+                return ResourceManager.GetString("UserAccessToThisPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Istifadəçi məlumatları düzgün daxil edilməyib.
+        /// </summary>
+        public static string UserCredentialsIncorrect {
+            get {
+                return ResourceManager.GetString("UserCredentialsIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hesabiniz bloklanib.
+        /// </summary>
+        public static string UserIsBlocked {
+            get {
+                return ResourceManager.GetString("UserIsBlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hesabınız kilidə düşüb.
+        /// </summary>
+        public static string UserIsLockedOut {
+            get {
+                return ResourceManager.GetString("UserIsLockedOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İstifadəçi adı və ya şifrə yanlışdır.
+        /// </summary>
+        public static string UserIsNotAllowed {
+            get {
+                return ResourceManager.GetString("UserIsNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İstidəçi adı tapılmadı.
+        /// </summary>
+        public static string UserNameNotFound {
+            get {
+                return ResourceManager.GetString("UserNameNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Istifadəçi tapılmadı.
+        /// </summary>
+        public static string UserNotFound {
+            get {
+                return ResourceManager.GetString("UserNotFound", resourceCulture);
             }
         }
     }

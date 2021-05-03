@@ -1,0 +1,196 @@
+﻿@model UserViewModel
+
+<div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!--begin::Card-->
+                <div class="card card-custom gutter-b example example-compact">
+                    <div class="card-header">
+                        <h3 class="card-title">@UI.AddNewUser</h3>
+                    </div>
+                    <form class="form" asp-action="Save" asp-controller="User" method="post"
+                           data-ajax="true"
+                              data-ajax-method="POST"
+                              data-ajax-begin="onBegin"
+                              data-ajax-success="onSuccess"
+                              data-ajax-failure="onFailure">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="Version" />
+                        <input asp-for="IsAdmin" type="hidden" />
+                        <input asp-for="IsBlocked" type="hidden" />
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    <label asp-for="UserName"></label>
+                                    <input asp-for="UserName" class="form-control" />
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="Email"></label>
+                                    <input asp-for="Email" id="Email" readonly="@(Model.Id != Guid.Empty)" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    @Html.LabelFor(m => m.Roles)
+                                    @(Html.DevExtreme().DropDownBoxFor(m => m.Roles).ID("roles")
+                                                            .ValueExpr("Id")
+                                                            .DisplayExpr("Text")
+                                                            .DataSource(d => d.Mvc().Area(DictionaryController.Area).Controller(DictionaryController.Name).LoadAction(nameof(DictionaryController.Roles)).Key("Id"))
+                                                            .Placeholder(UI.Choose)
+                                                            .ShowClearButton(true)
+                                                            .ContentTemplate(new TemplateName("EmbeddedDataGridMultiple"))
+                            )
+                                    @using (Html.DevExtreme().NamedTemplate("EmbeddedDataGridMultiple"))
+                                    {
+                                        @(Html.DevExtreme().DataGrid<SelectListItemGuid>()
+                                                    .ID("embedded-datagrid")
+                                                    .DataSource(new JS(@"component.option(""dataSource"")"))
+                                                    .Columns(columns =>
+                                                    {
+                                                        columns.AddFor(m => m.Text).Caption(UI.RoleName);
+                                                    })
+                                                    .HoverStateEnabled(true)
+                                                    .Paging(p => p.PageSize(10))
+                                                    .FilterRow(f => f.Visible(true))
+                                                    .Scrolling(s => s.Mode(GridScrollingMode.Infinite))
+                                                    .Height(345)
+                                                    .Selection(s => s.Mode(SelectionMode.Multiple))
+                                                    .SelectedRowKeys(new JS(@"component.option(""value"")"))
+                                                    .OnSelectionChanged(@<text>
+                                                        function(selectedItems) {
+                                                        var keys = selectedItems.selectedRowKeys;
+                                                        component.option("value", keys);
+                                                        }
+                                                    </text>)
+                                )
+                                    }
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    <label asp-for="FirstName"></label>
+                                    <input asp-for="FirstName" class="form-control" />
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="LastName"></label>
+                                    <input asp-for="LastName" class="form-control" />
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="Patronymic"></label>
+                                    <input asp-for="Patronymic" class="form-control" />
+                                    <span asp-validation-for="Patronymic" class="text-danger"></span>
+                                </div>
+                                @* <div class="col-lg-4">
+                                        <label asp-for="ParentId"></label>
+                                        @Html.DevExtreme().SelectBoxFor(m => m.ParentId).DisplayExpr("Text").ValueExpr("Id").DataSource(m => m.Mvc().Area("").Controller(DictionaryController.Name).LoadAction(nameof(DictionaryController.Menus)).Key("Id"))
+                                        <span asp-validation-for="ParentId" class="text-danger"></span>
+                                    </div>*@
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    <label asp-for="DateOfBith"></label>
+                                    @*  <input asp-for="DateOfBith" class="form-control" />*@
+                                    @Html.DevExtreme().DateBoxFor(m => m.DateOfBith).AcceptCustomValue(false).PickerType(DateBoxPickerType.Calendar).DisplayFormat(Format.ShortDate).Type(DateBoxType.Date)
+                                    <span asp-validation-for="DateOfBith" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="PhoneNumber"></label>
+                                    <input asp-for="PhoneNumber" id="PhoneNumber" class="form-control" />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="WorkNumber"></label>
+                                    <input asp-for="WorkNumber" id="WorkNumber" class="form-control" />
+                                    <span asp-validation-for="WorkNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label asp-for="Address"></label>
+                                    <input asp-for="Address" class="form-control" />
+                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    @(Html.DevExtreme().Button()
+                                        .ID("button")
+                                        .Text(UI.Save)
+                                        .ElementAttr("class", "btn btn-primary mr-2")
+                                        .UseSubmitBehavior(true)
+                                    )
+                                    <button type="submit" class="btn btn-secondary">@UI.Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <partial name="_FormScripts">
+        <script>
+        var KTMaskDemo = function () {
+
+            return {
+                // public functions
+                init: function () {
+                    $('#PhoneNumber').mask('+(000)00-000-00-00', {
+                        placeholder: "+(994)99-999-99-99"
+                    });
+                    $('#WorkNumber').mask('+(000)00-000-00-00', {
+                        placeholder: "+(994)99-999-99-99"
+                    });
+                }
+            };
+        }();
+
+            var KTInputmask = function () {
+
+               return {
+                // public functions
+                init: function() {
+                       $("#Email").inputmask({
+                           mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@@*{1,20}[.*{2,6}][.*{1,2}]",
+                           greedy: false,
+                           onBeforePaste: function (pastedValue, opts) {
+                               pastedValue = pastedValue.toLowerCase();
+                               return pastedValue.replace("mailto:", "");
+                           },
+                           definitions: {
+                               '*': {
+                                   validator: "[0-9A-Za-z!#$%&amp;'*+/=?^_`{|}~\-]",
+                                   cardinality: 1,
+                                   casing: "lower"
+                               }
+                           }
+                       });
+                }
+               };
+              }();
+
+   
+        jQuery(document).ready(function () {
+            KTMaskDemo.init();
+            KTInputmask.init();
+        });
+
+       function onBegin() {
+
+       }
+       function onSuccess(data) {
+           window.location.href = "@Url.Action(nameof(UserController.Index), UserController.Name)";
+       }
+       function onFailure(data) {
+       }
+    </script>
+}

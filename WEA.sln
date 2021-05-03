@@ -5,13 +5,18 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WEA.Web", "WEA.Web\WEA.Web.csproj", "{29C56155-583C-475D-AA01-1424B2F97AA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEA.SharedKernel", "WEA.SharedKernel\WEA.SharedKernel.csproj", "{D3E192A4-78E6-4630-9241-E7C6C22F0A17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WEA.SharedKernel", "WEA.SharedKernel\WEA.SharedKernel.csproj", "{D3E192A4-78E6-4630-9241-E7C6C22F0A17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEA.Infrastructure", "WEA.Infrastructure\WEA.Infrastructure.csproj", "{C27C85FA-1C8B-46C1-A8F9-DD7806549D39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WEA.Infrastructure", "WEA.Infrastructure\WEA.Infrastructure.csproj", "{C27C85FA-1C8B-46C1-A8F9-DD7806549D39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEA.Core", "WEA.Core\WEA.Core.csproj", "{642670ED-0DE5-45F5-95D4-FCBB04C329C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WEA.Core", "WEA.Core\WEA.Core.csproj", "{642670ED-0DE5-45F5-95D4-FCBB04C329C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WEA.Common", "WEA.Common\WEA.Common.csproj", "{386D528C-E2D1-4468-AF15-6FB60148806F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DevExtreme NuGet.config", "DevExtreme NuGet.config", "{D6D0696A-74B7-4CF4-8F06-6D66C00A42EF}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet.config = NuGet.config
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WEA.Presentation", "WEA.Presentation\WEA.Presentation.csproj", "{76287A53-4441-47D9-A47D-5F3191B02F4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +40,10 @@ Global
 		{642670ED-0DE5-45F5-95D4-FCBB04C329C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{642670ED-0DE5-45F5-95D4-FCBB04C329C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{642670ED-0DE5-45F5-95D4-FCBB04C329C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{386D528C-E2D1-4468-AF15-6FB60148806F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{386D528C-E2D1-4468-AF15-6FB60148806F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{386D528C-E2D1-4468-AF15-6FB60148806F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{386D528C-E2D1-4468-AF15-6FB60148806F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76287A53-4441-47D9-A47D-5F3191B02F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76287A53-4441-47D9-A47D-5F3191B02F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76287A53-4441-47D9-A47D-5F3191B02F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76287A53-4441-47D9-A47D-5F3191B02F4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

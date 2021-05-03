@@ -61,7 +61,16 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tələb olunur.
+        ///   Looks up a localized string similar to Email düzgün formatda deyil.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} boş ola bilməz.
         /// </summary>
         public static string Required {
             get {

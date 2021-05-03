@@ -98,7 +98,7 @@ namespace WEA.Web
             //services.AddScoped<PaymentExpiredAuthFilter>();
             //SeedAdminPW
             services.AddServiceFacades();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
         }
         public void ConfigureContainer(ContainerBuilder builder)
         {

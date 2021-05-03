@@ -13,6 +13,7 @@ using WEA.Core.Repositories;
 using WEA.Core.Services;
 using WEA.Core.Interfaces;
 using WEA.Core.Common.Services;
+using WEA.Core.CommonServices;
 
 namespace WEA.Infrastructure
 {
@@ -54,6 +55,11 @@ namespace WEA.Infrastructure
             builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>))
            .InstancePerLifetimeScope();
 
+            builder.RegisterGeneric(typeof(BaseService<>)).As(typeof(IBaseService<>))
+                .InstancePerLifetimeScope();
+
+
+            builder.RegisterType<UserService>().AsSelf().InstancePerLifetimeScope();
             builder
                 .RegisterType<Mediator>()
                 .As<IMediator>()

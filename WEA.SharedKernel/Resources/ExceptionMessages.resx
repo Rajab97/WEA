@@ -120,7 +120,73 @@
   <data name="ConcurencyEdit" xml:space="preserve">
     <value>Bu məlumatlar başqa istifadəçi tərəfindən yenilənmişdir. Məlumatların bütövlüyünün qorunması üçün yeniden prosese başlamanız gərəkir.</value>
   </data>
+  <data name="DefaultError" xml:space="preserve">
+    <value>Bilinməyən bir xəta baş verdi</value>
+  </data>
+  <data name="DuplicateEmail" xml:space="preserve">
+    <value>Email artıq mövcuddur</value>
+  </data>
+  <data name="DuplicateName" xml:space="preserve">
+    <value>İstifadəçi adı artıq istifadə olunur</value>
+  </data>
+  <data name="EmailConfirmationEx" xml:space="preserve">
+    <value>Email təsdiqlənməsi zamanı xəta baş verdi</value>
+  </data>
+  <data name="EmailNotConfirmed" xml:space="preserve">
+    <value>Emailiniz hələ təsdiqlənməyib</value>
+  </data>
   <data name="FatalError" xml:space="preserve">
     <value>Əməliyyat zamanı xəta baş verdi</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Email formatı düzgün deyil</value>
+  </data>
+  <data name="InvalidToken" xml:space="preserve">
+    <value>Yenidən müraciət etməyiniz xahiş olunur</value>
+  </data>
+  <data name="InvalidUserName" xml:space="preserve">
+    <value>İstifadəçi adı yalnız hərf və rəqəmlərdən ibarət ola bilər</value>
+  </data>
+  <data name="PageNotFound" xml:space="preserve">
+    <value>Axtardığınız səhifə tapılmadı</value>
+  </data>
+  <data name="PasswordAndConfirmPasswordNotSame" xml:space="preserve">
+    <value>Yeni şifrə təkrarı ilə eyni deyil</value>
+  </data>
+  <data name="PasswordMismatch" xml:space="preserve">
+    <value>Şifrə düzgün daxil edilməyib</value>
+  </data>
+  <data name="PasswordRequiresDigit" xml:space="preserve">
+    <value>Şifrədə ən azı bir rəqəm istifadə olunmalıdır</value>
+  </data>
+  <data name="PasswordRequiresLower" xml:space="preserve">
+    <value>Şifrədə ən azı bir kiçik hərf istifadə olunmalıdır</value>
+  </data>
+  <data name="PasswordRequiresUpper" xml:space="preserve">
+    <value>Şifrədə ən azı bir böyük hərf istifadə olunmalıdır</value>
+  </data>
+  <data name="PasswordTooShort" xml:space="preserve">
+    <value>Şifrə uzunluğu qısadır</value>
+  </data>
+  <data name="UserAccessToThisPage" xml:space="preserve">
+    <value>Sizin bu səhifəyə daxil olma icazəniz yoxdur</value>
+  </data>
+  <data name="UserCredentialsIncorrect" xml:space="preserve">
+    <value>Istifadəçi məlumatları düzgün daxil edilməyib</value>
+  </data>
+  <data name="UserIsBlocked" xml:space="preserve">
+    <value>Hesabiniz bloklanib</value>
+  </data>
+  <data name="UserIsLockedOut" xml:space="preserve">
+    <value>Hesabınız kilidə düşüb</value>
+  </data>
+  <data name="UserIsNotAllowed" xml:space="preserve">
+    <value>İstifadəçi adı və ya şifrə yanlışdır</value>
+  </data>
+  <data name="UserNameNotFound" xml:space="preserve">
+    <value>İstidəçi adı tapılmadı</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>Istifadəçi tapılmadı</value>
   </data>
 </root>

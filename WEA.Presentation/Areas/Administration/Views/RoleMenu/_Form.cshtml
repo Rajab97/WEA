@@ -1,0 +1,100 @@
+﻿@model RoleMenuViewModel
+
+<div class="modal fade" id="newFormModal" tabindex="-1" role="dialog" aria-labelledby="newFormModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable  " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@(Model.Id == Guid.Empty ? UI.Create : UI.Edit)</h5>
+            </div>
+            <div class="modal-body" >
+                <form class="form" asp-action="Save" asp-controller="RoleMenu"
+                      data-ajax="true"
+                      data-ajax-method="POST"
+                      data-ajax-begin="onBegin"
+                      data-ajax-success="onSuccess"
+                      data-ajax-failure="onFailure"
+                      id="roleMenuForm">
+
+                    @using (Html.DevExtreme().ValidationGroup())
+                    {
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="Version" />
+                        <div class="card-body" style="padding-left:0;padding-right:0;">
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label asp-for="MenuID"></label>
+                                    @Html.DevExtreme().SelectBoxFor(m => m.MenuID).DisplayExpr("Text").ValueExpr("Id").DataSource(m => m.Mvc().Area("").Controller(DictionaryController.Name).LoadAction(nameof(DictionaryController.Menus)).Key("Id"))
+                                    <span asp-validation-for="MenuID" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label asp-for="RoleID"></label>
+                                    @Html.DevExtreme().SelectBoxFor(m => m.RoleID).ID("RoleID").DisplayExpr("Text").ValueExpr("Id").DataSource(m => m.Mvc().Area("").Controller(DictionaryController.Name).LoadAction(nameof(DictionaryController.Roles)).Key("Id"))
+                                    <span asp-validation-for="RoleID" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-12 d-flex justify-content-between align-items-center" style="padding-top:7.5px;padding-bottom:7.5px;">
+                                    <div>
+                                        <label asp-for="CanCreate"></label>
+                                        <span asp-validation-for="CanCreate" class="text-danger"></span>
+                                    </div>
+                                    <div>
+                                        <span class="switch switch-outline switch-icon switch-success">
+                                            <label>
+                                                <input asp-for="CanCreate" type="checkbox" />
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 d-flex justify-content-between align-items-center" style="padding-top:7.5px;padding-bottom:7.5px;">
+                                    <div>
+                                        <label asp-for="CanEdit"></label>
+                                        <span asp-validation-for="CanEdit" class="text-danger"></span>
+                                    </div>
+                                    <div>
+                                        <span class="switch switch-outline switch-icon switch-success">
+                                            <label>
+                                                <input asp-for="CanEdit" type="checkbox" />
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 d-flex justify-content-between align-items-center" style="padding-top:7.5px;padding-bottom:7.5px;">
+                                    <div>
+                                        <label asp-for="CanDelete"></label>
+                                        <span asp-validation-for="CanDelete" class="text-danger"></span>
+                                    </div>
+                                    <div>
+                                        <span class="switch switch-outline switch-icon switch-success">
+                                            <label>
+                                                <input asp-for="CanDelete" type="checkbox" />
+                                                <span></span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-end" style="padding-left:0;padding-right:0;">
+                           @* <button type="submit" class="btn btn-primary mr-2">@UI.Save</button>*@
+                             @(Html.DevExtreme().Button()
+                                    .ID("button")
+                                    .Text(UI.Save)
+                                    .ElementAttr("class", "btn btn-primary mr-2")
+                                    .UseSubmitBehavior(true)
+                                )
+                            <button type="button" class="btn btn-light-primary btn-sm font-weight-bold" data-dismiss="modal">@UI.Cancel</button>
+                        </div>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+</script>

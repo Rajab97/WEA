@@ -1,0 +1,48 @@
+﻿@using WEA.Core.Entities
+@using WEA.SharedKernel.Resources
+@using WEA.Presentation.ViewComponents
+@model SubMenuComponentModel
+@{
+    var parent = Model.Menus.FirstOrDefault(m => m.Id == Model.ParentId);
+    var actionDescriptor = Url.ActionContext.ActionDescriptor;
+    var currentUrl = Url.Action(actionDescriptor.RouteValues["action"], actionDescriptor.RouteValues["controller"], new { area = actionDescriptor.RouteValues["area"] });
+}
+
+
+   @if (Model.Menus.Any(m => m.ParentId == Model.ParentId))
+   {
+        <div class="menu-submenu">
+            <i class="menu-arrow"></i>
+            <ul class="menu-subnav">
+                <li class="menu-item menu-item-parent" aria-haspopup="true">
+                    <span class="menu-link">
+                        <span class="menu-text">@(UI.ResourceManager.GetString(parent.Name)?? parent.Name)</span>
+                    </span>
+                </li>
+                @foreach (var subMenu in Model.Menus.Where(m=>m.ParentId == Model.ParentId))
+                {
+                    bool isSubMenusExist = Model.Menus.Any(m=>m.ParentId == subMenu.Id);
+                    <li class="menu-item @(subMenu.Url == currentUrl ? "menu-item-active aside-selected" : "")" aria-haspopup="true">
+                        <a href="@(isSubMenusExist?"javascript:;":subMenu.Url)" class="menu-link @(isSubMenusExist?"menu-toggle":"")">
+                            @if (!String.IsNullOrEmpty(subMenu.Icon))
+                            {
+                                <span class="@subMenu.Icon menu-icon"></span>
+                            }
+                            else
+                            {
+                                <i class="menu-bullet menu-bullet-line">
+                                    <span></span>
+                                </i>
+                            }
+                            <span class="menu-text">@(UI.ResourceManager.GetString(subMenu.Name)??subMenu.Name)</span>
+                            @if (isSubMenusExist)
+                            {
+                                <i class="menu-arrow"></i>
+                            }
+                        </a>
+                        @await Component.InvokeAsync(nameof(SubMenu), new { parentId = subMenu.Id })
+                    </li>
+                }
+            </ul>
+        </div>
+   }

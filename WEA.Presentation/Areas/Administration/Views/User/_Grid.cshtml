@@ -1,0 +1,78 @@
+﻿@using WEA.Core.Entities
+@(Html.DevExtreme().DataGrid<User>().ID("dtGrid").ElementAttr("class","dtGrid-custom")
+                             .DataSource(m => m.Mvc().Controller(UserController.Name).LoadAction(nameof(UserController.GetData)))
+                           .Columns(m =>
+                           {
+                               m.AddFor(m => m.UserName).Caption(UI.UserName);
+                               m.AddFor(m => m.FirstName).Caption(UI.Name);
+                               m.AddFor(m => m.LastName).Caption(UI.LastName);
+                               m.AddFor(m => m.Patronymic).Caption(UI.Patronymic);
+                               m.AddFor(m => m.PhoneNumber).Caption(UI.PhoneNumber);
+                               m.AddFor(m => m.DateOfBith).Caption(UI.DateOfBith).Format(Format.ShortDate).DataType(GridColumnDataType.Date);
+                               m.AddFor(m => m.DN_RoleNames).Caption(UI.Roles);
+                           })
+                        .FilterRow(f => f.Visible(true))
+                        .RemoteOperations(true)
+                        .Selection(m => {
+                            m.Mode(SelectionMode.Single);
+                        })
+                        .WordWrapEnabled(true)
+                        .Pager(p =>
+                        {
+                            p.ShowPageSizeSelector(true);
+                            p.AllowedPageSizes(new int[] { 5, 20, 50 });
+                        })
+                        .Paging(paging => paging.PageSize(10))
+                        .Scrolling(c =>
+                        {
+                            c.Mode(GridScrollingMode.Standard);
+                            c.ShowScrollbar(ShowScrollbarMode.Always);
+                            c.ScrollByContent(true);
+                        })
+                        .OnSelectionChanged("dtGrid.selectionChanged")
+                        .OnContentReady("dtGrid.onContentReady")
+                        .WEAGrid()
+                        //.OnRowPrepared("OnRowPrepared")
+                        //.OnCellPrepared("OnCellPrepared")
+                        .Summary(s => s
+                            .TotalItems(totalItems => {
+                                totalItems.AddFor(m => m.UserName).SummaryType(SummaryType.Count);
+                            })
+                        )
+                    )
+@*@(Html.DevExtreme()
+       .DataGrid<Menu>()
+        .DataSource(m => m.Mvc().Controller(MenuController.Name).LoadAction(nameof(MenuController.GetData)))
+        .ID("dtGrid")
+         .WEAGrid()
+        .RemoteOperations(true)
+        .ShowRowLines(true)
+        .ShowBorders(true)
+        .FilterRow(m => {
+            m.Visible(true).ApplyFilter(GridApplyFilterMode.Auto);
+        })
+        .WordWrapEnabled(true)
+            .Columns(m => {
+                m.AddFor(m => m.Title).Caption(UI.Title);
+                m.AddFor(m => m.Name).Caption(UI.Name);
+                m.AddFor(m => m.Area).Caption(UI.Area);
+                m.AddFor(m => m.Controller).Caption(UI.Controller);
+                m.AddFor(m => m.Action).Caption(UI.Action);
+            })
+        .Pager(p =>
+        {
+            p.ShowPageSizeSelector(true);
+            p.AllowedPageSizes(new int[] { 5, 20, 50 });
+        })
+        .Paging(paging => paging.PageSize(10))
+        .Scrolling(c =>
+        {
+            c.Mode(GridScrollingMode.Standard);
+            c.ShowScrollbar(ShowScrollbarMode.Always);
+            c.ScrollByContent(true);
+        })
+        //.OnRowPrepared("OnRowPrepared")
+        //.OnCellPrepared("OnCellPrepared")
+        .OnSelectionChanged("dtGrid.selectionChanged")
+        .OnContentReady("dtGrid.onContentReady")
+            )*@

@@ -1,0 +1,19 @@
+﻿@using WEA.SharedKernel.Resources
+@{
+    var controllerName = ViewContext.RouteData.Values["controller"].ToString();
+}
+
+    <div class="d-flex justify-content-between align-items-center">
+        <div id="crudBtn">
+            <button type="button" style="border-radius:2px;margin-right:3px;margin-left:0px;" id="btnAdd" class="btn btn-outline-primary" onclick="add();"><i class="far fa-plus-square mr-1"></i>@UI.AddNew</button>
+            <button type="button" style="border-radius:2px;margin-right:3px;margin-left:0px;" id="btnEdit" class="btn btn-outline-dark" onclick="edit();" disabled><i class="fas fa-align-left mr-1"></i>@UI.Edit</button>
+            <button type="button" style="border-radius:2px;margin-right:3px;margin-left:0px;" id="btnRemove" class="btn btn-outline-danger" onclick="remove();" disabled><i class="far fa-trash-alt mr-1"></i>@UI.Remove</button>
+            <button type="button" style="border-radius:2px;margin-right:3px;margin-left:0px;" id="btnRefresh" class="btn btn-outline-success" onclick="dtGrid.reload();"><i class="fas fa-sync"></i> @UI.Reload</button>
+            <button type="button" style="border-radius:2px;margin-right:3px;margin-left:0px;" id="btnFilter" class="btn btn-outline-warning" onclick="dtGrid.filter()"><i class="fa fa-filter"></i> @UI.Filter</button>
+           @* <button type="button" id="btnDetails" disabled class="btn btn-sm btn-dark" onclick="info()"><i class="fa fa-info"></i> @UI.Infoo</button>
+            <button type="button" id="btnPrint" class="btn btn-sm btn-default" onclick="printItem();" disabled><i class="fa fa-print"></i> @UI.Print</button>
+            <button type="button" id="btnExport" class="btn btn-sm btn-success" onclick="dtGrid.exportToExcel();"><i class="fa fa-print"></i> @UI.ExportToExcel</button>
+*@
+        </div>
+        <div id="secondaryBtn"></div>
+    </div>

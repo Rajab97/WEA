@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DevExtreme.AspNet.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +17,10 @@ namespace WEA.Web.Controllers
         {
             _dictionaryServiceFacade = dictionaryServiceFacade;
         }
-        public IActionResult Menus(string q , string page)
+        public IActionResult Menus(DataSourceLoadOptions options)
         {
             var result = _dictionaryServiceFacade.Menus();
-            return Json(result);
+            return Load(result,options);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using DevExtreme.AspNet.Data;
+using DevExtreme.AspNet.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -26,7 +28,15 @@ namespace WEA.Web.Controllers
             var json = JsonConvert.SerializeObject(data, config);
             return Content(json, contentType, contentEncoding);
         }
-
+        protected ActionResult Load<T>(IQueryable<T> data, DataSourceLoadOptions loadOptions)
+        {
+            var result = DataSourceLoader.Load(data, loadOptions);
+            return Json(result);
+        }
+        protected ActionResult Load<T>(IEnumerable<T> data, DataSourceLoadOptions loadOptions)
+        {
+            return Json(DataSourceLoader.Load(data, loadOptions));
+        }
         protected ActionResult AjaxFailureResult(Result response, Action action = null)
         {
             action?.Invoke();

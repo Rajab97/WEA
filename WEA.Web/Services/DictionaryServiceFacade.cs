@@ -16,10 +16,10 @@ namespace WEA.Web.Services
             _menus = menus;
         }
 
-        public List<SelectListItem> Menus()
+        public IQueryable<SelectListItem> Menus()
         {
             var result = _menus.GetAll().Select(m => new SelectListItem() { Value = m.Id.ToString(), Text = m.Title });
-            return result.ToList();
+            return result;
         }
     }
 }

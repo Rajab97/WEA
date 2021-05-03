@@ -1,0 +1,62 @@
+﻿@using WEA.Core.Entities
+@(Html.DevExtreme().DataGrid<RoleMenuGridView>().ID("dtGrid").ElementAttr("class","dtGrid-custom")
+                             .DataSource(m => m.Mvc().Controller(GridViewController.Name).Area(GridViewController.Area).LoadAction(nameof(GridViewController.GetRoleMenuGridView)))
+                           .Columns(m =>
+                           {
+                               m.AddFor(m => m.MenuName).Caption(UI.MenuName);
+                               m.AddFor(m => m.RoleName).Caption(UI.RoleName);
+                               m.AddFor(m => m.CanCreate).Caption(UI.CanCreate).CellTemplate(@<text>
+                                                <% if(data.CanCreate) { %>
+                                                           <i class="fas fa-key text-primary"></i>
+
+                                                <% } else { %>
+                                                            <i class="fas fa-exclamation text-danger"></i>
+                                                <% } %>
+                                             </text>);
+                               m.AddFor(m => m.CanEdit).Caption(UI.CanEdit).CellTemplate(@<text>
+                                                <% if(data.CanEdit) { %>
+                                                           <i class="fas fa-key text-primary"></i>
+
+                                                <% } else { %>
+                                                            <i class="fas fa-exclamation text-danger"></i>
+                                                <% } %>
+                                             </text>);
+                               m.AddFor(m => m.CanDelete).Caption(UI.CanDelete).CellTemplate(@<text>
+                                                <% if(data.CanDelete) { %>
+                                                           <i class="fas fa-key text-primary"></i>
+
+                                                <% } else { %>
+                                                            <i class="fas fa-exclamation text-danger"></i>
+                                                <% } %>
+                                             </text>);
+
+                           })
+                        .FilterRow(f => f.Visible(true))
+                        .RemoteOperations(true)
+                        .Selection(m => {
+                            m.Mode(SelectionMode.Single);
+                        })
+                        .WordWrapEnabled(true)
+                        .Pager(p =>
+                        {
+                            p.ShowPageSizeSelector(true);
+                            p.AllowedPageSizes(new int[] { 5, 20, 50 });
+                        })
+                        .Paging(paging => paging.PageSize(10))
+                        .Scrolling(c =>
+                        {
+                            c.Mode(GridScrollingMode.Standard);
+                            c.ShowScrollbar(ShowScrollbarMode.Always);
+                            c.ScrollByContent(true);
+                        })
+                        .OnSelectionChanged("dtGrid.selectionChanged")
+                        .OnContentReady("dtGrid.onContentReady")
+                        .WEAGrid()
+                        //.OnRowPrepared("OnRowPrepared")
+                        //.OnCellPrepared("OnCellPrepared")
+                        .Summary(s => s
+                            .TotalItems(totalItems => {
+                                totalItems.AddFor(m => m.RoleName).SummaryType(SummaryType.Count);
+                            })
+                        )
+                    )

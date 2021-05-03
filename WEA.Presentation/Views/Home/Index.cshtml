@@ -1,0 +1,55 @@
+@using WEA.Presentation.Models
+
+<div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container-custom">
+        <div class="row">
+            <div class="col-lg-12">
+                <!--begin::Card-->
+                <div class="card card-custom gutter-b example example-compact">
+                    <div class="card-header">
+                        <h3 class="card-title">2 Columns Form Layout</h3>
+                    </div>
+                    @(Html.DevExtreme().DataGrid<SampleOrder>().ID("dtGrid")
+                        .ShowBorders(true)
+                        .DataSource(d => d.Mvc().Controller("SampleData").LoadAction("Get").Key("OrderID"))
+                        .Columns(columns => {
+                            columns.AddFor(m => m.OrderID);
+                            columns.AddFor(m => m.OrderDate);
+                            columns.AddFor(m => m.CustomerName);
+                            columns.AddFor(m => m.ShipCountry);
+                            columns.AddFor(m => m.ShipCity);
+                        })
+                        .Paging(p => p.PageSize(10))
+                        .FilterRow(f => f.Visible(true))
+                        .HeaderFilter(f => f.Visible(true))
+                        .GroupPanel(p => p.Visible(true))
+                        .Grouping(g => g.AutoExpandAll(false))
+                        .RemoteOperations(true)
+                        .Selection(m => {
+                            m.Mode(SelectionMode.Single);
+                        })
+                        .OnSelectionChanged("test")
+                        .Summary(s => s
+                            .TotalItems(totalItems => {
+                                totalItems.AddFor(m => m.ShipCity).SummaryType(SummaryType.Count);
+                            })
+                            .GroupItems(groupItems => {
+                                groupItems.Add().SummaryType(SummaryType.Count);
+                            })
+                        )
+                    )
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{ 
+    <script>
+        function test() {
+            var instance = $("#dtGrid").dxDataGrid("instance");
+            console.log(instance);
+        }
+    </script>
+
+}

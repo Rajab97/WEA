@@ -7,6 +7,7 @@ namespace WEA.Core.Entities
 {
     public class Role : IdentityRole<Guid>
     {
-
+        public bool IsSuperAdmin { get; set; }
+        public ICollection<RoleMenu> RoleMenus { get; set; }
     }
 }
