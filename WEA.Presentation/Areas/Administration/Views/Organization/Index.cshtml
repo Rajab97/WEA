@@ -15,32 +15,13 @@
     </div>
 </div>
 
-<div class="formModal"></div>
-
-
 @section Scripts{
     <script>
-        function add() {
-            util.showModal("@Url.Action(nameof(RoleController.Add),RoleController.Name)", "GET", {}, ".formModal","#newFormModal");
-          @* window.location.href = '@Url.Action(nameof(RoleController.Add),RoleController.Name)'*@
-        }
-
-        function onBegin() {
-            util.loading(true, "form");
-        }
-        function onSuccess(data) {
-            console.log(data);
-            util.hideModal();
-            dtGrid.reload();
-            util.loading(false, "form");
-        }
-        function onFailure(data) {
-            util.loading(false, "form");
-            console.log(data);
-            console.log("onFailure");
+       function add() {
+           window.location.href = '@Url.Action(nameof(OrganizationController.Add), OrganizationController.Name)'
         }
         function edit() {
-            util.showModal('@Url.Action(nameof(RoleController.Add), RoleController.Name)?id=' + selectedId, "GET", {}, ".formModal","#newFormModal");
+            window.location.href = '@Url.Action(nameof(OrganizationController.Add), OrganizationController.Name)?id=' + selectedId;
         }
         function remove() {
             Swal.fire({
@@ -52,7 +33,7 @@
                 cancelButtonText: "@UI.No"
             }).then(function (result) {
                 if (result.value) {
-                    ajax.sendRequest("@Url.Action(nameof(RoleController.Remove), RoleController.Name)", "POST",
+                    ajax.sendRequest("@Url.Action(nameof(OrganizationController.Remove), OrganizationController.Name)", "POST",
                         { id: selectedId },
                         function (data) {
                             dtGrid.reload();

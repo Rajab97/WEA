@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WEA.Core.Entities;
+using WEA.Core.Interfaces;
 using WEA.Core.Services;
 using WEA.Infrastructure;
 using WEA.Infrastructure.Data;
@@ -20,6 +21,7 @@ using WEA.Presentation.Helpers.Extensions;
 using WEA.Presentation.Helpers.Identity;
 using WEA.Presentation.Helpers.Identity.Authorization;
 using WEA.Presentation.Helpers.Identity.Authorization.Handlers;
+using WEA.Presentation.Services;
 
 namespace WEA.Presentation
 {
@@ -68,6 +70,11 @@ namespace WEA.Presentation
                 options.SlidingExpiration = false;
                 //options.SlidingExpiration = true;
             });
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+            });
 
             var profiles = this.GetType().Assembly.GetTypes().Where(m => m.IsClass && typeof(Profile).IsAssignableFrom(m));
             var mapperConfiguration = new AutoMapper.MapperConfiguration(mc => {
@@ -88,6 +95,7 @@ namespace WEA.Presentation
             });
             services.AddScoped<IUserClaimsPrincipalFactory<User>, AdditionalUserClaimsPrincipleFactory>();
             services.AddScoped<CurrentUser>();
+            services.AddScoped<ISessionService, SessionService>();
             services.AddSingleton<IAuthorizationPolicyProvider, CustomPolicyProvider>();
             services.AddSingleton<IAuthorizationHandler, ExpiredPaymentAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, AdminAuthorizationHandler>();
@@ -123,6 +131,7 @@ namespace WEA.Presentation
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthentication();
             app.UseAuthorization();

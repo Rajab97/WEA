@@ -88,6 +88,15 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Yeni obyekt əlavə et.
+        /// </summary>
+        public static string AddNewOrganization {
+            get {
+                return ResourceManager.GetString("AddNewOrganization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yeni istifadəçi əlavə et.
         /// </summary>
         public static string AddNewUser {
@@ -187,6 +196,24 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Maşın hissəsi.
+        /// </summary>
+        public static string CarPart {
+            get {
+                return ResourceManager.GetString("CarPart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maşın hissələri.
+        /// </summary>
+        public static string CarParts {
+            get {
+                return ResourceManager.GetString("CarParts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Şifrəni yenilə.
         /// </summary>
         public static string ChangePassword {
@@ -237,6 +264,15 @@ namespace WEA.SharedKernel.Resources {
         public static string Create {
             get {
                 return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Əlavə olunma tarixi.
+        /// </summary>
+        public static string CreatedDate {
+            get {
+                return ResourceManager.GetString("CreatedDate", resourceCulture);
             }
         }
         
@@ -313,6 +349,15 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Son istifadə tarixi.
+        /// </summary>
+        public static string ExpiredDate {
+            get {
+                return ResourceManager.GetString("ExpiredDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Axtar.
         /// </summary>
         public static string Filter {
@@ -340,6 +385,15 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to İdentifikasiya nömrəsi.
+        /// </summary>
+        public static string IdentificationNumber {
+            get {
+                return ResourceManager.GetString("IdentificationNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adminlik statusu.
         /// </summary>
         public static string IsSuperAdmin {
@@ -363,6 +417,24 @@ namespace WEA.SharedKernel.Resources {
         public static string LastName {
             get {
                 return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to En kordinatı.
+        /// </summary>
+        public static string Lattitude {
+            get {
+                return ResourceManager.GetString("Lattitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uzunluq kordinatı.
+        /// </summary>
+        public static string Longtitude {
+            get {
+                return ResourceManager.GetString("Longtitude", resourceCulture);
             }
         }
         
@@ -430,6 +502,69 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Obyektin ünvanı.
+        /// </summary>
+        public static string OrganizationAddress {
+            get {
+                return ResourceManager.GetString("OrganizationAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obyektin adı.
+        /// </summary>
+        public static string OrganizationName {
+            get {
+                return ResourceManager.GetString("OrganizationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obyektlər.
+        /// </summary>
+        public static string Organizations {
+            get {
+                return ResourceManager.GetString("Organizations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sahibkar.
+        /// </summary>
+        public static string Owner {
+            get {
+                return ResourceManager.GetString("Owner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sahibkar adı.
+        /// </summary>
+        public static string OwnerName {
+            get {
+                return ResourceManager.GetString("OwnerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sahibkar soyadı.
+        /// </summary>
+        public static string OwnerSurname {
+            get {
+                return ResourceManager.GetString("OwnerSurname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sahibkar istifadəçi adı.
+        /// </summary>
+        public static string OwnerUserName {
+            get {
+                return ResourceManager.GetString("OwnerUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ata adı.
         /// </summary>
         public static string Patronymic {
@@ -462,6 +597,15 @@ namespace WEA.SharedKernel.Resources {
         public static string ProcessSucced {
             get {
                 return ResourceManager.GetString("ProcessSucced", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Məhsul növü.
+        /// </summary>
+        public static string ProductType {
+            get {
+                return ResourceManager.GetString("ProductType", resourceCulture);
             }
         }
         

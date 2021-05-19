@@ -116,11 +116,11 @@
             util.loading(true, "form");
        }
         function onSuccess(data) {
-            util.loading(true, "form");
+            util.loading(false, "form");
            window.location.href = "@Url.Action(nameof(MenuController.Index),MenuController.Name)";
        }
         function onFailure(data) {
-            util.loading(true, "form");
+            util.loading(false, "form");
        }
     </script>
 }

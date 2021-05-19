@@ -14,6 +14,7 @@ namespace WEA.Presentation.Areas.Administration.Models
             CreateMap<Menu, MenuViewModel>().ReverseMap();
             CreateMap<Role, RoleViewModel>().ReverseMap();
             CreateMap<RoleMenu, RoleMenuViewModel>().ReverseMap();
+            CreateMap<Organization, OrganizationViewModel>().ReverseMap();
             CreateMap<UserViewModel, User>()
                 .ForMember(d => d.Roles, s => s.MapFrom(x => x.Roles[0]))
                 .ReverseMap()

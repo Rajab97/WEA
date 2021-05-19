@@ -15,6 +15,7 @@ namespace WEA.Presentation.Helpers.Identity
         {
             _httpContextAccessor = httpContextAccessor;
         }
+        public Guid? UserId { get { return _httpContextAccessor.HttpContext.User.Identity.UserId(); } }
         public bool IsSuperAdmin { get { return _httpContextAccessor.HttpContext.User.Identity.IsSuperAdmin(); } }
         public bool IsOwner { get { return _httpContextAccessor.HttpContext.User.Identity.IsOwner(); } }
         public IEnumerable<Menu> Menus { get { return _httpContextAccessor.HttpContext.User.Identity.Menus(); } }

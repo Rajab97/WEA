@@ -15,8 +15,4 @@
     <ProjectReference Include="..\WEA.SharedKernel\WEA.SharedKernel.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Helpers\Enums\" />
-  </ItemGroup>
-
 </Project>

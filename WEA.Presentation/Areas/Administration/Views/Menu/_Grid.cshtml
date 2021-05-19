@@ -3,12 +3,12 @@
                              .DataSource(m => m.Mvc().Controller(MenuController.Name).LoadAction(nameof(MenuController.GetData)))
                            .Columns(m =>
                            {
-                               m.AddFor(m => m.Title).Caption(UI.Title);
-                               m.AddFor(m => m.Name).Caption(UI.Name);
-                               m.AddFor(m => m.Area).Caption(UI.Area);
-                               m.AddFor(m => m.Controller).Caption(UI.Controller);
-                               m.AddFor(m => m.Action).Caption(UI.Action);
-                               m.AddFor(m => m.IsVisible).Caption(UI.IsVisible).CellTemplate(@<text>
+                           m.AddFor(m => m.Title).Caption(UI.Title);
+                           m.AddFor(m => m.Name).Caption(UI.Name);
+                           m.AddFor(m => m.Area).Caption(UI.Area);
+                           m.AddFor(m => m.Controller).Caption(UI.Controller);
+                           m.AddFor(m => m.Action).Caption(UI.Action);
+                           m.AddFor(m => m.IsVisible).Caption(UI.IsVisible).CellTemplate(@<text>
                                     <%if(data.IsVisible){%>
                                         <i class="far fa-eye text-primary"></i>
                                     <%} else {%>

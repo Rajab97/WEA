@@ -11,5 +11,6 @@ namespace WEA.Presentation.Helpers.Identity
         public const string PaymentExDate = "PaymentExDate";
         public const string IsOwner = "IsOwner";
         public const string Menus = "Menus";
+        public const string UserId = "UserId";
     }
 }

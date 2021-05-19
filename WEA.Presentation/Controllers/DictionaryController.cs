@@ -18,6 +18,12 @@ namespace WEA.Presentation.Controllers
         {
             _dictionaryServiceFacade = dictionaryServiceFacade;
         }
+        
+        public IActionResult Users(DataSourceLoadOptions options)
+        {
+            var result = _dictionaryServiceFacade.Users();
+            return Load(result, options);
+        }
         public IActionResult Menus(DataSourceLoadOptions options)
         {
             var result = _dictionaryServiceFacade.Menus();
@@ -26,6 +32,11 @@ namespace WEA.Presentation.Controllers
         public IActionResult Roles(DataSourceLoadOptions options)
         {
             var result = _dictionaryServiceFacade.Roles();
+            return Load(result, options);
+        }
+        public IActionResult ProductTypes(DataSourceLoadOptions options)
+        {
+            var result = _dictionaryServiceFacade.ProductTypes();
             return Load(result, options);
         }
     }

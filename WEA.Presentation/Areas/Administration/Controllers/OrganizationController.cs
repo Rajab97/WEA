@@ -1,34 +1,32 @@
 ﻿using DevExtreme.AspNet.Mvc;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WEA.Core.Interfaces;
 using WEA.Presentation.Areas.Administration.Models;
 using WEA.Presentation.Areas.Administration.Services;
 using WEA.Presentation.Controllers;
 using WEA.Presentation.Helpers.Statics;
+using WEA.Presentation.Services;
 
 namespace WEA.Presentation.Areas.Administration.Controllers
 {
     [Area(AreaConstants.Admin)]
-    [Authorize]
-    public class RoleController : BaseController
+    public class OrganizationController : BaseController
     {
-        public const string Name = "Role";
-        private readonly RoleServiceFacade _facade;
-        private readonly ISessionService _sessionService;
+        public const string Name = "Organization";
+        private readonly OrganizationServiceFacade _facade;
+        private readonly DictionaryServiceFacade _dictionary;
 
-        public RoleController(RoleServiceFacade facade, ISessionService sessionService)
+        public OrganizationController(OrganizationServiceFacade facade,
+                                DictionaryServiceFacade dictionary)
         {
             _facade = facade;
-            _sessionService = sessionService;
+            _dictionary = dictionary;
         }
         public IActionResult Index()
         {
-            var userId = _sessionService.UserId;
             return View();
         }
 
@@ -42,7 +40,7 @@ namespace WEA.Presentation.Areas.Administration.Controllers
         [HttpGet]
         public async Task<IActionResult> Add(Guid? id)
         {
-            var model = new RoleViewModel();
+            var model = new OrganizationViewModel();
             if (id.HasValue)
             {
                 var result = await _facade.GetModel(id.Value);
@@ -51,16 +49,16 @@ namespace WEA.Presentation.Areas.Administration.Controllers
                 else
                     return AjaxFailureResult(result);
             }
-            return PartialView("_Form", model);
+            return View("Form", model);
 
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Save(RoleViewModel model)
+        public async Task<IActionResult> Save(OrganizationViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return ValidationProblem();
+                return View("Form", model);
             }
             var result = await _facade.SaveAsync(model);
             if (result.IsSucceed)

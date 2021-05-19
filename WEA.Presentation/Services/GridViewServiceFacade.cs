@@ -21,5 +21,9 @@ namespace WEA.Presentation.Services
         {
             return Succeed(_context.RoleMenuGridView.AsQueryable());
         }
+        public Result<IQueryable<OrganizationGridView>> GetOrganizationGridView()
+        {
+            return Succeed(_context.OrganizationGridView.AsQueryable());
+        }
     }
 }

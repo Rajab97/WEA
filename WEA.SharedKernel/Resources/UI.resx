@@ -126,6 +126,9 @@
   <data name="AddNew" xml:space="preserve">
     <value>Yeni</value>
   </data>
+  <data name="AddNewOrganization" xml:space="preserve">
+    <value>Yeni obyekt əlavə et</value>
+  </data>
   <data name="AddNewUser" xml:space="preserve">
     <value>Yeni istifadəçi əlavə et</value>
   </data>
@@ -159,6 +162,12 @@
   <data name="CanEdit" xml:space="preserve">
     <value>Məlumata düzəliş etmə hüququ</value>
   </data>
+  <data name="CarPart" xml:space="preserve">
+    <value>Maşın hissəsi</value>
+  </data>
+  <data name="CarParts" xml:space="preserve">
+    <value>Maşın hissələri</value>
+  </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Şifrəni yenilə</value>
   </data>
@@ -176,6 +185,9 @@
   </data>
   <data name="Create" xml:space="preserve">
     <value>Yenisini əlavə et</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Əlavə olunma tarixi</value>
   </data>
   <data name="Css" xml:space="preserve">
     <value>Css class</value>
@@ -201,6 +213,9 @@
   <data name="EnterEmailForRecovery" xml:space="preserve">
     <value>Şifrənizi yeniləmək üçün istifadəçi adınızı daxil edin</value>
   </data>
+  <data name="ExpiredDate" xml:space="preserve">
+    <value>Son istifadə tarixi</value>
+  </data>
   <data name="Filter" xml:space="preserve">
     <value>Axtar</value>
   </data>
@@ -210,6 +225,9 @@
   <data name="Icon" xml:space="preserve">
     <value>İkon</value>
   </data>
+  <data name="IdentificationNumber" xml:space="preserve">
+    <value>İdentifikasiya nömrəsi</value>
+  </data>
   <data name="IsSuperAdmin" xml:space="preserve">
     <value>Adminlik statusu</value>
   </data>
@@ -218,6 +236,12 @@
   </data>
   <data name="LastName" xml:space="preserve">
     <value>Soyad</value>
+  </data>
+  <data name="Lattitude" xml:space="preserve">
+    <value>En kordinatı</value>
+  </data>
+  <data name="Longtitude" xml:space="preserve">
+    <value>Uzunluq kordinatı</value>
   </data>
   <data name="MenuName" xml:space="preserve">
     <value>Menyunun adı</value>
@@ -240,6 +264,27 @@
   <data name="No" xml:space="preserve">
     <value>Xeyir</value>
   </data>
+  <data name="OrganizationAddress" xml:space="preserve">
+    <value>Obyektin ünvanı</value>
+  </data>
+  <data name="OrganizationName" xml:space="preserve">
+    <value>Obyektin adı</value>
+  </data>
+  <data name="Organizations" xml:space="preserve">
+    <value>Obyektlər</value>
+  </data>
+  <data name="Owner" xml:space="preserve">
+    <value>Sahibkar</value>
+  </data>
+  <data name="OwnerName" xml:space="preserve">
+    <value>Sahibkar adı</value>
+  </data>
+  <data name="OwnerSurname" xml:space="preserve">
+    <value>Sahibkar soyadı</value>
+  </data>
+  <data name="OwnerUserName" xml:space="preserve">
+    <value>Sahibkar istifadəçi adı</value>
+  </data>
   <data name="Patronymic" xml:space="preserve">
     <value>Ata adı</value>
   </data>
@@ -251,6 +296,9 @@
   </data>
   <data name="ProcessSucced" xml:space="preserve">
     <value>Əməliyyat uğurla sonlandı</value>
+  </data>
+  <data name="ProductType" xml:space="preserve">
+    <value>Məhsul növü</value>
   </data>
   <data name="Reload" xml:space="preserve">
     <value>Yenilə</value>

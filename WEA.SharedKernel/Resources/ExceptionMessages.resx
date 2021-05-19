@@ -135,6 +135,9 @@
   <data name="EmailNotConfirmed" xml:space="preserve">
     <value>Emailiniz hələ təsdiqlənməyib</value>
   </data>
+  <data name="ExOrganizationNotFound" xml:space="preserve">
+    <value>Məlumat bazasındakı obyekt tapılmadı</value>
+  </data>
   <data name="FatalError" xml:space="preserve">
     <value>Əməliyyat zamanı xəta baş verdi</value>
   </data>
@@ -167,6 +170,9 @@
   </data>
   <data name="PasswordTooShort" xml:space="preserve">
     <value>Şifrə uzunluğu qısadır</value>
+  </data>
+  <data name="UniqueOwnerOccur" xml:space="preserve">
+    <value>Sahibkar təkrarlana bilməz</value>
   </data>
   <data name="UserAccessToThisPage" xml:space="preserve">
     <value>Sizin bu səhifəyə daxil olma icazəniz yoxdur</value>

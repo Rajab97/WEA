@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WEA.Core.Entities;
+using WEA.Core.Interfaces;
 using WEA.Core.Repositories;
 using WEA.Core.ViewEntities;
 
@@ -10,7 +11,7 @@ namespace WEA.Infrastructure.Data.Repositories
 {
     public class MenuRepository : EfRepository<Menu>, IMenuRepository
     {
-        public MenuRepository(DbFactory dbFactory) : base(dbFactory)
+        public MenuRepository(DbFactory dbFactory,ISessionService sessionService) : base(dbFactory, sessionService)
         {
 
         }

@@ -25,7 +25,7 @@ namespace WEA.Infrastructure
         public DefaultInfrastructureModule(bool isDevelopment, Assembly callingAssembly = null)
         {
             _isDevelopment = isDevelopment;
-            var coreAssembly = Assembly.GetAssembly(typeof(DatabasePopulator));
+            var coreAssembly = Assembly.GetAssembly(typeof(EmailService));
             var infrastructureAssembly = Assembly.GetAssembly(typeof(EfRepository));
             _assemblies.Add(coreAssembly);
             _assemblies.Add(infrastructureAssembly);

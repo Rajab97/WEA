@@ -115,6 +115,15 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Məlumat bazasındakı obyekt tapılmadı.
+        /// </summary>
+        public static string ExOrganizationNotFound {
+            get {
+                return ResourceManager.GetString("ExOrganizationNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Əməliyyat zamanı xəta baş verdi.
         /// </summary>
         public static string FatalError {
@@ -210,6 +219,15 @@ namespace WEA.SharedKernel.Resources {
         public static string PasswordTooShort {
             get {
                 return ResourceManager.GetString("PasswordTooShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sahibkar təkrarlana bilməz.
+        /// </summary>
+        public static string UniqueOwnerOccur {
+            get {
+                return ResourceManager.GetString("UniqueOwnerOccur", resourceCulture);
             }
         }
         

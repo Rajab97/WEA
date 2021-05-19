@@ -25,5 +25,12 @@ namespace WEA.Presentation.Controllers
                 return Load(result.Data,loadOptions);
             return AjaxFailureResult(result);
         }
+        public IActionResult OrganizationGridView(DataSourceLoadOptions loadOptions)
+        {
+            var result = _facade.GetOrganizationGridView();
+            if (result.IsSucceed)
+                return Load(result.Data, loadOptions);
+            return AjaxFailureResult(result);
+        }
     }
 }

@@ -9,15 +9,19 @@ using WEA.SharedKernel;
 using WEA.SharedKernel.Exceptions;
 using WEA.SharedKernel.Interfaces;
 using Ardalis.Specification.EntityFrameworkCore;
+using WEA.Core.Interfaces;
+
 namespace WEA.Infrastructure.Data
 {
     public class EfRepository : IRepository
     {
         protected readonly DbFactory _dbFactory;
+        private readonly ISessionService _sessionService;
 
-        public EfRepository(DbFactory dbFactory)
+        public EfRepository(DbFactory dbFactory,ISessionService sessionService)
         {
             _dbFactory = dbFactory;
+            _sessionService = sessionService;
         }
 
         public virtual T GetById<T>(Guid id) where T : BaseEntity, new()
@@ -45,7 +49,9 @@ namespace WEA.Infrastructure.Data
         {
             if (typeof(AuditEntity).IsAssignableFrom(typeof(T)))
             {
-                ((AuditEntity)(object)entity).CreatedDate = DateTime.UtcNow;
+                ((AuditEntity)(object)entity).CreatedDate = DateTime.Now;
+                if (_sessionService.UserId.HasValue)
+                    ((AuditEntity)(object)entity).CreatedUserId = _sessionService.UserId.Value;
             }
             await _dbFactory.DbContext.Set<T>().AddAsync(entity);
            // await _dbFactory.DbContext.SaveChangesAsync();
@@ -62,6 +68,8 @@ namespace WEA.Infrastructure.Data
             if (typeof(AuditEntity).IsAssignableFrom(typeof(T)))
             {
                 ((AuditEntity)(object)entity).UpdatedDate = DateTime.UtcNow;
+                if (_sessionService.UserId.HasValue)
+                    ((AuditEntity)(object)entity).UpdatedUserId = _sessionService.UserId.Value;
             }
             entity.Version += 1;
             _dbFactory.DbContext.Entry(entity).State = EntityState.Modified;
@@ -73,6 +81,7 @@ namespace WEA.Infrastructure.Data
             if (typeof(DeleteEntity).IsAssignableFrom(typeof(T)))
             {
                 ((DeleteEntity)(object)entity).IsDeleted = true;
+                ((DeleteEntity)(object)entity).DateOfDelete = DateTime.Now;
                 _dbFactory.DbContext.Update(entity);
             }
             else
@@ -96,10 +105,12 @@ namespace WEA.Infrastructure.Data
     public class EfRepository<T> : IRepository<T> where T : BaseEntity, new()
     {
         protected readonly DbFactory _dbFactory;
+        private readonly ISessionService _sessionService;
 
-        public EfRepository(DbFactory dbFactory)
+        public EfRepository(DbFactory dbFactory,ISessionService sessionService)
         {
             _dbFactory = dbFactory;
+            _sessionService = sessionService;
         }
         public virtual T GetById(Guid id)
         {
@@ -122,7 +133,9 @@ namespace WEA.Infrastructure.Data
         {
             if (typeof(AuditEntity).IsAssignableFrom(typeof(T)))
             {
-                ((AuditEntity)(object)entity).CreatedDate = DateTime.UtcNow;
+                ((AuditEntity)(object)entity).CreatedDate = DateTime.Now;
+                if (_sessionService.UserId.HasValue)
+                    ((AuditEntity)(object)entity).CreatedUserId = _sessionService.UserId.Value;
             }
             await _dbFactory.DbContext.Set<T>().AddAsync(entity);
             // await _dbFactory.DbContext.SaveChangesAsync();
@@ -136,7 +149,9 @@ namespace WEA.Infrastructure.Data
             }
             if (typeof(AuditEntity).IsAssignableFrom(typeof(T)))
             {
-                ((AuditEntity)(object)entity).UpdatedDate = DateTime.UtcNow;
+                ((AuditEntity)(object)entity).UpdatedDate = DateTime.Now;
+                if (_sessionService.UserId.HasValue)
+                    ((AuditEntity)(object)entity).UpdatedUserId = _sessionService.UserId.Value;
             }
             entity.Version += 1;
             _dbFactory.DbContext.Entry(entity).State = EntityState.Modified;
@@ -147,6 +162,7 @@ namespace WEA.Infrastructure.Data
             if (typeof(DeleteEntity).IsAssignableFrom(typeof(T)))
             {
                 ((DeleteEntity)(object)entity).IsDeleted = true;
+                ((DeleteEntity)(object)entity).DateOfDelete = DateTime.Now;
                 _dbFactory.DbContext.Update(entity);
             }
             else

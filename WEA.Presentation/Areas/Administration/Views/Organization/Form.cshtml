@@ -1,0 +1,146 @@
+﻿@model OrganizationViewModel
+
+<div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!--begin::Card-->
+                <div class="card card-custom gutter-b example example-compact">
+                    <div class="card-header">
+                        <h3 class="card-title">@UI.AddNewOrganization</h3>
+                    </div>
+                    <form class="form" asp-action="Save" asp-controller="Organization" method="post"
+                          data-ajax="true"
+                          data-ajax-method="POST"
+                          data-ajax-begin="onBegin"
+                          data-ajax-success="onSuccess"
+                          data-ajax-failure="onFailure" style="position:relative;">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="Version" />
+                        <div class="card-body">
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    <label asp-for="OrganizationName"></label>
+                                    <input asp-for="OrganizationName" class="form-control" />
+                                    <span asp-validation-for="OrganizationName" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="OrganizationAddress"></label>
+                                    <input asp-for="OrganizationAddress" class="form-control" />
+                                    <span asp-validation-for="OrganizationAddress" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="ProductType"></label>
+                                    @Html.DevExtreme().SelectBoxFor(m => m.ProductType).DisplayExpr("Text").ValueExpr("Value").DataSource(m => m.Mvc().Area("").Controller(DictionaryController.Name).LoadAction(nameof(DictionaryController.ProductTypes)).Key("Value"))
+                                    <span asp-validation-for="ProductType" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-4">
+                                    @Html.LabelFor(m => m.OwnerId)
+                                    @(Html.DevExtreme().DropDownBoxFor(m => m.OwnerId).ID("owner")
+                                                            .ValueExpr("Id")
+                                                            .DisplayExpr("UserName")
+                                                            .DataSource(d => d.Mvc().Area(DictionaryController.Area).Controller(DictionaryController.Name).LoadAction(nameof(DictionaryController.Users)).Key("Id"))
+                                                            .Placeholder(UI.Choose)
+                                                            .ShowClearButton(true)
+                                                            .ContentTemplate(new TemplateName("EmbeddedDataGridMultiple"))
+                            )
+                                    @using (Html.DevExtreme().NamedTemplate("EmbeddedDataGridMultiple"))
+                                    {
+                                        @(Html.DevExtreme().DataGrid<User>()
+                                                    .ID("embedded-datagrid")
+                                                    .DataSource(new JS(@"component.option(""dataSource"")"))
+                                                    .Columns(columns =>
+                                                    {
+                                                        columns.AddFor(m => m.UserName).Caption(UI.UserName);
+                                                        columns.AddFor(m => m.FirstName).Caption(UI.Name);
+                                                        columns.AddFor(m => m.LastName).Caption(UI.LastName);
+                                                    })
+                                                    .HoverStateEnabled(true)
+                                                    .Paging(p => p.PageSize(10))
+                                                    .FilterRow(f => f.Visible(true))
+                                                    .Scrolling(s => s.Mode(GridScrollingMode.Infinite))
+                                                    .Height(345)
+                                                    .Selection(s => s.Mode(SelectionMode.Single))
+                                                    .SelectedRowKeys(new JS(@"component.option(""value"")"))
+                                                    .OnSelectionChanged(@<text>
+                                                        function(selectedItems) {
+                                                        var keys = selectedItems.selectedRowKeys;
+                                                        component.option("value", keys);
+                                                        }
+                                                    </text>)
+                                )
+                                    }
+                                </div>
+                                <div class="col-lg-4">
+                                    <label asp-for="TelephoneNumber"></label>
+                                    <input asp-for="TelephoneNumber" class="form-control" />
+                                    <span asp-validation-for="TelephoneNumber" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <label asp-for="Lattitude"></label>
+                                    <input asp-for="Lattitude" readonly class="form-control" />
+                                    <span asp-validation-for="Lattitude" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-2">
+                                    <label asp-for="Longtitude"></label>
+                                    <input asp-for="Longtitude" readonly class="form-control" />
+                                    <span asp-validation-for="Longtitude" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    @(Html.DevExtreme().Button()
+                                    .ID("button")
+                                    .Text(UI.Save)
+                                    .ElementAttr("class", "btn btn-primary mr-2")
+                                    .UseSubmitBehavior(true)
+                                )
+                                    <button type="submit" class="btn btn-secondary">@UI.Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <partial name="_FormScripts">
+        <script>
+            var KTMaskDemo = function () {
+
+            return {
+                // public functions
+                init: function () {
+                    $('#TelephoneNumber').mask('+(000)00-000-00-00', {
+                        placeholder: "+(994)99-999-99-99"
+                    });
+                }
+            };
+            }();
+
+        jQuery(document).ready(function () {
+            KTMaskDemo.init();
+        });
+
+            function onBegin() {
+                util.loading(true, "form");
+           }
+            function onSuccess(data) {
+                util.loading(false, "form");
+               window.location.href = "@Url.Action(nameof(OrganizationController.Index), OrganizationController.Name)";
+           }
+            function onFailure(data) {
+                console.log("Testest");
+                util.loading(false, "form");
+           }
+        </script>
+}

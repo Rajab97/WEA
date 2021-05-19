@@ -25,6 +25,20 @@ namespace WEA.Presentation.Helpers.Identity
                 return false;
             }
         }
+
+        public static Guid? UserId(this IIdentity identity)
+        {
+            try
+            {
+                var str = identity.GetDetail<string>(CustomClaimTypes.UserId);
+                if (string.IsNullOrEmpty(str)) return null;
+                return Guid.Parse(str);
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
         public static DateTime? PaymentExpiredDate(this IIdentity identity)
         {
             try

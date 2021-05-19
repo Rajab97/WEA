@@ -1,0 +1,47 @@
+﻿@using WEA.Core.Entities
+@(Html.DevExtreme().DataGrid<OrganizationGridView>().ID("dtGrid").ElementAttr("class","dtGrid-custom")
+                             .DataSource(m => m.Mvc().Controller(GridViewController.Name).Area(GridViewController.Area).LoadAction(nameof(GridViewController.OrganizationGridView)))
+                           .Columns(m =>
+                           {
+                               m.AddFor(m => m.IdentificationNumber).Caption(UI.IdentificationNumber);
+                               m.AddFor(m => m.OwnerName).Caption(UI.OwnerName);
+                               m.AddFor(m => m.OwnerSurname).Caption(UI.OwnerSurname);
+                               m.AddFor(m => m.OwnerUserName).Caption(UI.OwnerUserName);
+                               m.AddFor(m => m.ProductType).Caption(UI.ProductType);
+                               m.AddFor(m => m.OrganizationName).Caption(UI.OrganizationName);
+                               m.AddFor(m=>m.CreatedDate).Format(Format.ShortDate).DataType(GridColumnDataType.Date).Caption(UI.CreatedDate).SortOrder(SortOrder.Desc);
+                               m.AddFor(m=>m.ExpiredDate).Format(Format.ShortDate).DataType(GridColumnDataType.Date).Caption(UI.ExpiredDate);
+                               m.AddFor(m => m.OrganizationAddress).Caption(UI.OrganizationAddress).HidingPriority(1);
+                               m.AddFor(m => m.Lattitude).Caption(UI.Lattitude).DataType(GridColumnDataType.Number).Format(Format.Decimal).HidingPriority(2);
+                               m.AddFor(m => m.Longtitude).Caption(UI.Longtitude).DataType(GridColumnDataType.Number).Format(Format.Decimal).HidingPriority(3);
+                           })
+                        .FilterRow(f => f.Visible(true))
+                        .RemoteOperations(true)
+                        .Selection(m => {
+                            m.Mode(SelectionMode.Single);
+                        })
+                        .WordWrapEnabled(true)
+                        .Pager(p =>
+                        {
+                            p.ShowPageSizeSelector(true);
+                            p.AllowedPageSizes(new int[] { 5, 20, 50 });
+
+                        })
+                        .Paging(paging => paging.PageSize(10))
+                        .Scrolling(c =>
+                        {
+                            c.Mode(GridScrollingMode.Standard);
+                            c.ShowScrollbar(ShowScrollbarMode.Always);
+                            c.ScrollByContent(true);
+                        })
+                        .OnSelectionChanged("dtGrid.selectionChanged")
+                        .OnContentReady("dtGrid.onContentReady")
+                        .WEAGrid()
+                        //.OnRowPrepared("OnRowPrepared")
+                        //.OnCellPrepared("OnCellPrepared")
+                        .Summary(s => s
+                            .TotalItems(totalItems => {
+                                totalItems.AddFor(m => m.IdentificationNumber).SummaryType(SummaryType.Count);
+                            })
+                        )
+                    )

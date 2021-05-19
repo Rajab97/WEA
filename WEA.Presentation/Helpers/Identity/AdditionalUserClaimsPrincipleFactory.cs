@@ -35,6 +35,7 @@ namespace WEA.Presentation.Helpers.Identity
             var principal = await base.CreateAsync(user);
             var identity = (ClaimsIdentity)principal.Identity;
             var claims = new List<Claim>();
+            claims.Add(new Claim(CustomClaimTypes.UserId,user.Id.ToString()));
             claims.Add(new Claim(CustomClaimTypes.IsSuperAdmin,user.IsAdmin.ToString()));
 
             var organization = await _organizationRepository.GetAll().Where(m => m.OwnerId == user.Id).FirstOrDefaultAsync();

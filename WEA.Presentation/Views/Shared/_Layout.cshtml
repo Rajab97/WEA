@@ -87,8 +87,9 @@
 
             <!--begin::Page-->
             <div class="d-flex flex-row flex-column-fluid page">
-
-                @await Component.InvokeAsync(nameof(Aside))
+                <cache expires-sliding="@TimeSpan.FromMinutes(5)" expires-after="@TimeSpan.FromHours(1)" vary-by-user="true" vary-by-route="area,controller,action">
+                    @await Component.InvokeAsync(nameof(Aside))
+                </cache>
                 <!--begin::Wrapper-->
                 <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
 

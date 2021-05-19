@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WEA.Core.Entities;
+using WEA.Core.Interfaces;
 using WEA.Core.Repositories;
 
 namespace WEA.Infrastructure.Data.Repositories
 {
     public class RoleMenuRepository : EfRepository<RoleMenu>, IRoleMenuRepository
     {
-        public RoleMenuRepository(DbFactory dbFactory) : base(dbFactory)
+        public RoleMenuRepository(DbFactory dbFactory, ISessionService sessionService) : base(dbFactory, sessionService)
         {
 
         }

@@ -5,12 +5,13 @@ using WEA.Core.Entities;
 using WEA.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using WEA.Core.Interfaces;
 
 namespace WEA.Infrastructure.Data.Repositories
 {
     public class OrganizationRepository : EfRepository<Organization>, IOrganizationRepository
     {
-        public OrganizationRepository(DbFactory dbFactory) : base(dbFactory)
+        public OrganizationRepository(DbFactory dbFactory, ISessionService sessionService) : base(dbFactory, sessionService)
         {
 
         }

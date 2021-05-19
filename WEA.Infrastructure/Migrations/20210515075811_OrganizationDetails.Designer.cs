@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WEA.Infrastructure.Data;
 
 namespace WEA.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210515075811_OrganizationDetails")]
+    partial class OrganizationDetails
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -196,7 +198,7 @@ namespace WEA.Infrastructure.Migrations
                     b.Property<Guid>("CreatedUserId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime?>("DateOfDelete")
+                    b.Property<DateTime>("DateOfDelete")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("ExpiredDate")
@@ -210,10 +212,10 @@ namespace WEA.Infrastructure.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<decimal?>("Lattitude")
+                    b.Property<decimal>("Lattitude")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal?>("Longtitude")
+                    b.Property<decimal>("Longtitude")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("OrganizationAddress")
