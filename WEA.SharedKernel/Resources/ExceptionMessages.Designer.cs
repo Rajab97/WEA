@@ -133,6 +133,24 @@ namespace WEA.SharedKernel.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fayl silinmədi.
+        /// </summary>
+        public static string FileNotRemoved {
+            get {
+                return ResourceManager.GetString("FileNotRemoved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fayl və ya fayllardan hər hansısa birinin ölçüsü {0} mb-dan artıqdır. {0} mb-dan artıq fayllar yüklənə bilməz. Zəhmət olmasa faylın ölçüsünü azaldın..
+        /// </summary>
+        public static string FileSizeNotAllowed {
+            get {
+                return ResourceManager.GetString("FileSizeNotAllowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email formatı düzgün deyil.
         /// </summary>
         public static string InvalidEmail {
@@ -156,6 +174,24 @@ namespace WEA.SharedKernel.Resources {
         public static string InvalidUserName {
             get {
                 return ResourceManager.GetString("InvalidUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ən azı bir sənəd yükləyin.
+        /// </summary>
+        public static string MinOnefile {
+            get {
+                return ResourceManager.GetString("MinOnefile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Obyekt yaradıla bilmədi.
+        /// </summary>
+        public static string ObjectNotCreated {
+            get {
+                return ResourceManager.GetString("ObjectNotCreated", resourceCulture);
             }
         }
         
@@ -219,6 +255,15 @@ namespace WEA.SharedKernel.Resources {
         public static string PasswordTooShort {
             get {
                 return ResourceManager.GetString("PasswordTooShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rollar yaradıla bilmədi.
+        /// </summary>
+        public static string RolesNotCreated {
+            get {
+                return ResourceManager.GetString("RolesNotCreated", resourceCulture);
             }
         }
         
@@ -291,6 +336,15 @@ namespace WEA.SharedKernel.Resources {
         public static string UserNotFound {
             get {
                 return ResourceManager.GetString("UserNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to İstifadəçilər yaradıla bilmədi.
+        /// </summary>
+        public static string UsersNotCreated {
+            get {
+                return ResourceManager.GetString("UsersNotCreated", resourceCulture);
             }
         }
     }

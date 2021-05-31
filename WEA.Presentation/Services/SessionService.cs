@@ -16,13 +16,16 @@ namespace WEA.Presentation.Services
 
 		public SessionService(IHttpContextAccessor httpContextRepository, CurrentUser currentUser)
 		{
+            if (httpContextRepository?.HttpContext == null)
+				return;
+
 			_session = httpContextRepository.HttpContext.Session;
 			_currentUser = currentUser;
 
 			if (_session == null)
 				throw new ArgumentNullException("Session cannot be null.");
 		}
-        public Guid? UserId { get { return _currentUser.UserId; } private set { } }
+        public Guid? UserId { get { return _currentUser?.UserId; } private set { } }
 
 		public T Get<T>(string key)
 		{

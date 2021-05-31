@@ -82464,6 +82464,10 @@ body.swal2-height-auto {
 .uppy .uppy-Dashboard-inner .uppy-DashboardItem-previewLink {
   z-index: 1;
 }
+
+.uppy .uppy-Dashboard-inner .uppy-DashboardContent-panel {
+    z-index: 1010;
+}
 .uppy .uppy-Dashboard-inner .uppy-DashboardContent-title {
   color: #3F4254;
   font-size: 1rem;
@@ -83250,7 +83254,7 @@ body {
     top: 0;
     right: 0;
     left: 0;
-    z-index: 97;
+    z-index: 1997;
   }
   .aside-enabled .header.header-fixed {
     left: 265px;

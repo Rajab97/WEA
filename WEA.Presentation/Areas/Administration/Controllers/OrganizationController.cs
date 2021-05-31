@@ -25,9 +25,12 @@ namespace WEA.Presentation.Areas.Administration.Controllers
             _facade = facade;
             _dictionary = dictionary;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var result = await _facade.GetDefaultModelAsync();
+            if (result.IsSucceed)
+                return View("Form", result.Data);
+            return View("Form", new OrganizationViewModel());
         }
 
         public IActionResult GetData(DataSourceLoadOptions options)

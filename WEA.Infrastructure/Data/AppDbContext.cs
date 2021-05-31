@@ -31,6 +31,7 @@ namespace WEA.Infrastructure.Data
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Menu> Menus { get; set; }
         public DbSet<RoleMenu> RoleMenus { get; set; }
+        public DbSet<Attachment> Attachments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

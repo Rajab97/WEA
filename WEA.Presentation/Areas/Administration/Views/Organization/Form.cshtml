@@ -31,63 +31,9 @@
                                     <span asp-validation-for="OrganizationAddress" class="text-danger"></span>
                                 </div>
                                 <div class="col-lg-4">
-                                    <label asp-for="ProductType"></label>
-                                    @Html.DevExtreme().SelectBoxFor(m => m.ProductType).DisplayExpr("Text").ValueExpr("Value").DataSource(m => m.Mvc().Area("").Controller(DictionaryController.Name).LoadAction(nameof(DictionaryController.ProductTypes)).Key("Value"))
-                                    <span asp-validation-for="ProductType" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-lg-4">
-                                    @Html.LabelFor(m => m.OwnerId)
-                                    @(Html.DevExtreme().DropDownBoxFor(m => m.OwnerId).ID("owner")
-                                                            .ValueExpr("Id")
-                                                            .DisplayExpr("UserName")
-                                                            .DataSource(d => d.Mvc().Area(DictionaryController.Area).Controller(DictionaryController.Name).LoadAction(nameof(DictionaryController.Users)).Key("Id"))
-                                                            .Placeholder(UI.Choose)
-                                                            .ShowClearButton(true)
-                                                            .ContentTemplate(new TemplateName("EmbeddedDataGridMultiple"))
-                            )
-                                    @using (Html.DevExtreme().NamedTemplate("EmbeddedDataGridMultiple"))
-                                    {
-                                        @(Html.DevExtreme().DataGrid<User>()
-                                                    .ID("embedded-datagrid")
-                                                    .DataSource(new JS(@"component.option(""dataSource"")"))
-                                                    .Columns(columns =>
-                                                    {
-                                                        columns.AddFor(m => m.UserName).Caption(UI.UserName);
-                                                        columns.AddFor(m => m.FirstName).Caption(UI.Name);
-                                                        columns.AddFor(m => m.LastName).Caption(UI.LastName);
-                                                    })
-                                                    .HoverStateEnabled(true)
-                                                    .Paging(p => p.PageSize(10))
-                                                    .FilterRow(f => f.Visible(true))
-                                                    .Scrolling(s => s.Mode(GridScrollingMode.Infinite))
-                                                    .Height(345)
-                                                    .Selection(s => s.Mode(SelectionMode.Single))
-                                                    .SelectedRowKeys(new JS(@"component.option(""value"")"))
-                                                    .OnSelectionChanged(@<text>
-                                                        function(selectedItems) {
-                                                        var keys = selectedItems.selectedRowKeys;
-                                                        component.option("value", keys);
-                                                        }
-                                                    </text>)
-                                )
-                                    }
-                                </div>
-                                <div class="col-lg-4">
                                     <label asp-for="TelephoneNumber"></label>
                                     <input asp-for="TelephoneNumber" class="form-control" />
                                     <span asp-validation-for="TelephoneNumber" class="text-danger"></span>
-                                </div>
-                                <div class="col-lg-2">
-                                    <label asp-for="Lattitude"></label>
-                                    <input asp-for="Lattitude" readonly class="form-control" />
-                                    <span asp-validation-for="Lattitude" class="text-danger"></span>
-                                </div>
-                                <div class="col-lg-2">
-                                    <label asp-for="Longtitude"></label>
-                                    <input asp-for="Longtitude" readonly class="form-control" />
-                                    <span asp-validation-for="Longtitude" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +85,6 @@
                window.location.href = "@Url.Action(nameof(OrganizationController.Index), OrganizationController.Name)";
            }
             function onFailure(data) {
-                console.log("Testest");
                 util.loading(false, "form");
            }
         </script>

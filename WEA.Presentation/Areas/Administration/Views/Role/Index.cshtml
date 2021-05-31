@@ -24,7 +24,13 @@
             util.showModal("@Url.Action(nameof(RoleController.Add),RoleController.Name)", "GET", {}, ".formModal","#newFormModal");
           @* window.location.href = '@Url.Action(nameof(RoleController.Add),RoleController.Name)'*@
         }
-
+        function selectionChangedCallBack(data) {
+            console.log(data);
+            if (data.IsDefaultRole) {
+                $("#btnEdit").prop("disabled", true);
+                $("#btnRemove").prop("disabled", true);
+            }
+        }
         function onBegin() {
             util.loading(true, "form");
         }

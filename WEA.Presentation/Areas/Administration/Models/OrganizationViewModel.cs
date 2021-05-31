@@ -21,18 +21,5 @@ namespace WEA.Presentation.Areas.Administration.Models
         [Display(ResourceType = typeof(UI), Name = nameof(UI.PhoneNumber))]
         public string TelephoneNumber { get; set; }
 
-        [Display(ResourceType = typeof(UI), Name = nameof(UI.Lattitude))]
-        public decimal? Lattitude { get; set; }
-
-        [Display(ResourceType = typeof(UI), Name = nameof(UI.Longtitude))]
-        public decimal? Longtitude { get; set; }
-
-        [Display(ResourceType = typeof(UI), Name = nameof(UI.ProductType))]
-        [Required(ErrorMessageResourceType = typeof(ValidationMessages), ErrorMessageResourceName = nameof(ValidationMessages.Required))]
-        public string ProductType { get; set; }
-
-        [Display(ResourceType = typeof(UI), Name = nameof(UI.Owner))]
-        [Required(ErrorMessageResourceType = typeof(ValidationMessages), ErrorMessageResourceName = nameof(ValidationMessages.Required))]
-        public Guid? OwnerId { get; set; }
     }
 }

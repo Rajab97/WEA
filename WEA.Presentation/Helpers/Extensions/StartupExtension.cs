@@ -20,6 +20,7 @@ namespace WEA.Presentation.Helpers.Extensions
             services.AddScoped<GridViewServiceFacade>();
             services.AddScoped<DictionaryServiceFacade>();
             services.AddScoped<OrganizationServiceFacade>();
+            services.AddScoped<FileServiceFacade>();
         }
     }
 }

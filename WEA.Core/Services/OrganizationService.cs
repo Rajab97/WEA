@@ -26,19 +26,13 @@ namespace WEA.Core.Services
 
         public override async Task<Result> CreateAsync(Organization model)
         {
-            var isOwnerDuplicated = await _repository.GetAll().AnyAsync(m => m.OwnerId == model.OwnerId);
-            if (isOwnerDuplicated)
-            {
-                return Result.Failure(ExceptionMessages.UniqueOwnerOccur);
-            }
             lock (lock1)
             {
-                model.IdentificationNumber = GenerateIdentificationNumberForOrganization(model);
                 return base.CreateAsync(model).Result;
             }
         }
 
-        private string GenerateIdentificationNumberForOrganization(Organization model)
+    /*    private string GenerateIdentificationNumberForOrganization(Organization model)
         {
             StringBuilder result = new StringBuilder();
 
@@ -62,7 +56,7 @@ namespace WEA.Core.Services
             incrementNum++;
             result.Append(incrementNum.ToString().PadLeft(3, '0'));
             return result.ToString();
-        }
+        }*/
 
         public async Task<Result<int>> ChangeTitleAsync(string title)
         {

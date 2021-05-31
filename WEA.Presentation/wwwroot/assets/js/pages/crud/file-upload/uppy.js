@@ -233,7 +233,8 @@ var KTUppy = function () {
 		});
 
 		uppyMin.on('complete', function(file) {
-			$.each(file.successful, function(index, value){
+			$.each(file.successful, function (index, value) {
+				console.log(value);
 				var sizeLabel = "bytes";
 				var filesize = value.size;
 				if (filesize > 1024){

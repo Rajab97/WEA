@@ -38,20 +38,15 @@ namespace WEA.Presentation.Helpers.Identity
             claims.Add(new Claim(CustomClaimTypes.UserId,user.Id.ToString()));
             claims.Add(new Claim(CustomClaimTypes.IsSuperAdmin,user.IsAdmin.ToString()));
 
-            var organization = await _organizationRepository.GetAll().Where(m => m.OwnerId == user.Id).FirstOrDefaultAsync();
+            var organization = await _organizationRepository.GetAll().FirstOrDefaultAsync();
             if (organization != null)
             {
-                claims.Add(new Claim(CustomClaimTypes.IsOwner, true.ToString()));
                 if (organization.ExpiredDate.HasValue)
                 {
                     claims.Add(new Claim(CustomClaimTypes.PaymentExDate,organization.ExpiredDate.Value.ToString()));
                 }
             }
-            else
-            {
-                claims.Add(new Claim(CustomClaimTypes.IsOwner, false.ToString()));
-                //claims.Add(new Claim(CustomClaimTypes.PaymentExDate,  null));
-            }
+            
             var menus = _menuService.GetUserMenus(user.Id);
             if (menus.IsSucceed && menus.Data != null && menus.Data.Any())
             {

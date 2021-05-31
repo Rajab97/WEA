@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>WEA_Presentation</title>
+    <title>@(ViewBag.Title??"WEA")</title>
     <link rel="canonical" href="https://keenthemes.com/metronic" />
 
     <!--begin::Fonts-->
@@ -45,7 +45,7 @@
     <link href="~/assets/css/themes/layout/header/menu/dark.css" rel="stylesheet" type="text/css" />
     <link href="~/assets/css/themes/layout/brand/light.css" rel="stylesheet" type="text/css" />
     <link href="~/assets/css/themes/layout/aside/light.css" rel="stylesheet" type="text/css" />
-    <link href="~/css/lib/three-dots.min.css" rel="stylesheet" type="text/css"  />
+    <link href="~/css/lib/three-dots.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="~/css/Site.css" />
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -73,6 +73,7 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.unobtrusive-ajax.js"></script>
     <script src="~/assets/js/pages/features/miscellaneous/sweetalert2.js"></script>
 
+    @(await RenderSectionAsync("Styles",false))
 </head>
 
 <!--end::Head-->
@@ -96,7 +97,7 @@
                     <partial name="/Views/Shared/Partials/_header.cshtml" />
                     <!--begin::Content-->
                     <div class="content d-flex flex-column flex-column-fluid" style="padding-top:0;" id="kt_content">
-                        <partial name="/Views/Shared/Partials/_subheader.cshtml" />
+                        @await Component.InvokeAsync(nameof(SubHeader))
                         @*<partial name="/Views/Shared/Partials/_content.cshtml" >*@
                         @RenderBody()
                     </div>
@@ -113,7 +114,7 @@
 
         <!--end::Main-->
         <!--[html-partial:include:{"file":"partials/_extras/offcanvas/quick-user.html"}]/-->
-        <partial name="/Views/Shared/Partials/Extras/_quick-user.cshtml" />
+        @await Component.InvokeAsync(nameof(QuickUser))
         <!--[html-partial:include:{"file":"partials/_extras/offcanvas/quick-cart.html"}]/-->
         <partial name="/Views/Shared/Partials/Extras/_quick-cart.cshtml" />
         <!--[html-partial:include:{"file":"partials/_extras/offcanvas/quick-panel.html"}]/-->
@@ -130,14 +131,14 @@
 
         </div>
         <!--<div class="snippet d-flex align-items-center justify-content-center">
-            <div class="stage">-->
-                @*falling*@
-                @*bricks*@
-                @*spin*@
-                @*flashing*@
-                <!--<div class="dot-falling"></div>
-            </div>
-        </div>-->
+        <div class="stage">-->
+        @*falling*@
+        @*bricks*@
+        @*spin*@
+        @*flashing*@
+        <!--<div class="dot-falling"></div>
+        </div>
+    </div>-->
         <script>
             var HOST_URL = "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
         </script>

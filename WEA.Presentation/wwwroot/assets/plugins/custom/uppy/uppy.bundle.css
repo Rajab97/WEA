@@ -2557,7 +2557,7 @@ button.uppy-Dashboard-Item-progressIndicator:focus .uppy-Dashboard-Item-progress
   border-radius: 5px;
   display: -ms-flexbox;
   display: -webkit-box;
-  display: flex;
+  display: none;
   -ms-flex-direction: column;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;

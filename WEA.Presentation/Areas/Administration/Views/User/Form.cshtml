@@ -1,5 +1,14 @@
 ﻿@model UserViewModel
-
+@{
+    ViewBag.Title = UI.Users;
+    ViewBag.SubHeaders = new List<SubHeaderItemModel>() {
+                            new SubHeaderItemModel(){ Text = UI.Users , Url = Url.Action(nameof(RoleController.Index)) , OrderIndex = 1},
+                            new SubHeaderItemModel(){ Text = UI.AddNewUser , Url = Url.Action(nameof(RoleController.Add)) , OrderIndex = 2},
+    };
+}
+@section Styles{ 
+    <partial name="_FormStyles">
+}
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->
     <div class="container">
@@ -10,12 +19,7 @@
                     <div class="card-header">
                         <h3 class="card-title">@UI.AddNewUser</h3>
                     </div>
-                    <form class="form" asp-action="Save" asp-controller="User" method="post"
-                           data-ajax="true"
-                              data-ajax-method="POST"
-                              data-ajax-begin="onBegin"
-                              data-ajax-success="onSuccess"
-                              data-ajax-failure="onFailure">
+                    <form class="form" enctype="multipart/form-data" asp-action="Save" asp-controller="User" method="post">
                         <input type="hidden" asp-for="Id" />
                         <input type="hidden" asp-for="Version" />
                         <input asp-for="IsAdmin" type="hidden" />
@@ -85,10 +89,10 @@
                                     <span asp-validation-for="Patronymic" class="text-danger"></span>
                                 </div>
                                 @* <div class="col-lg-4">
-                                        <label asp-for="ParentId"></label>
-                                        @Html.DevExtreme().SelectBoxFor(m => m.ParentId).DisplayExpr("Text").ValueExpr("Id").DataSource(m => m.Mvc().Area("").Controller(DictionaryController.Name).LoadAction(nameof(DictionaryController.Menus)).Key("Id"))
-                                        <span asp-validation-for="ParentId" class="text-danger"></span>
-                                    </div>*@
+                <label asp-for="ParentId"></label>
+                @Html.DevExtreme().SelectBoxFor(m => m.ParentId).DisplayExpr("Text").ValueExpr("Id").DataSource(m => m.Mvc().Area("").Controller(DictionaryController.Name).LoadAction(nameof(DictionaryController.Menus)).Key("Id"))
+                <span asp-validation-for="ParentId" class="text-danger"></span>
+            </div>*@
                             </div>
                             <div class="form-group row">
                                 <div class="col-lg-4">
@@ -115,6 +119,21 @@
                                     <span asp-validation-for="Address" class="text-danger"></span>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <div class="card card-custom card-stretch">
+                                    <div class="card-header">
+                                        <div class="card-title">
+                                            <h3 class="card-label">@UI.AddFiles</h3>
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="uppy" id="kt_uppy_1">
+                                            <div class="uppy-dashboard"></div>
+                                            <div class="uppy-progress"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-footer">
                             <div class="row">
@@ -124,6 +143,7 @@
                                         .Text(UI.Save)
                                         .ElementAttr("class", "btn btn-primary mr-2")
                                         .UseSubmitBehavior(true)
+                                        .OnClick("function(e){submitOnClicked(e);}")
                                     )
                                     <button type="submit" class="btn btn-secondary">@UI.Cancel</button>
                                 </div>
@@ -154,34 +174,273 @@
             };
         }();
 
-            var KTInputmask = function () {
+        var KTInputmask = function () {
 
-               return {
-                // public functions
-                init: function() {
-                       $("#Email").inputmask({
-                           mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@@*{1,20}[.*{2,6}][.*{1,2}]",
-                           greedy: false,
-                           onBeforePaste: function (pastedValue, opts) {
-                               pastedValue = pastedValue.toLowerCase();
-                               return pastedValue.replace("mailto:", "");
-                           },
-                           definitions: {
-                               '*': {
-                                   validator: "[0-9A-Za-z!#$%&amp;'*+/=?^_`{|}~\-]",
-                                   cardinality: 1,
-                                   casing: "lower"
-                               }
-                           }
-                       });
+            return {
+            // public functions
+            init: function() {
+                    $("#Email").inputmask({
+                        mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@@*{1,20}[.*{2,6}][.*{1,2}]",
+                        greedy: false,
+                        onBeforePaste: function (pastedValue, opts) {
+                            pastedValue = pastedValue.toLowerCase();
+                            return pastedValue.replace("mailto:", "");
+                        },
+                        definitions: {
+                            '*': {
+                                validator: "[0-9A-Za-z!#$%&amp;'*+/=?^_`{|}~\-]",
+                                cardinality: 1,
+                                casing: "lower"
+                            }
+                        }
+                    });
+            }
+            };
+            }();
+
+            // Class definition
+            var files = {};
+            var totalSize = 0;
+            var uppyDashboard;
+            var KTUppy = function () {
+                const Tus = Uppy.Tus;
+                const ProgressBar = Uppy.ProgressBar;
+                const StatusBar = Uppy.StatusBar;
+                const FileInput = Uppy.FileInput;
+                const Informer = Uppy.Informer;
+                const ImageEditor = Uppy.ImageEditor;
+                // to get uppy companions working, please refer to the official documentation here: https://uppy.io/docs/companion/
+                const Dashboard = Uppy.Dashboard;
+                const Dropbox = Uppy.Dropbox;
+                const GoogleDrive = Uppy.GoogleDrive;
+                const Instagram = Uppy.Instagram;
+                const Webcam = Uppy.Webcam;
+
+                var initUppy1 = function () {
+                    var id = '#kt_uppy_1';
+
+                    var options = {
+                        proudlyDisplayPoweredByUppy: false,
+                        target: id,
+                        inline: true,
+                        replaceTargetContent: true,
+                        showProgressDetails: true,
+                        hideUploadButton: true,
+                        hideRetryButton: true,
+                        hidePauseResumeButton: true,
+                        showProgressDetails: true,
+                        browserBackButtonClose: true,
+                        plugins: ['ImageEditor', 'Webcam'],
+                        locale: {
+                            strings: {
+                                  // When `inline: false`, used as the screen reader label for the button that closes the modal.
+                                  closeModal: 'Close Modal',
+                                  // Used as the screen reader label for the plus (+) button that shows the “Add more files” screen
+                                  addMoreFiles: 'Daha bir neçə fayl əlavə et',
+                                  addMore: 'Daha bir neçə fayl əlavə et',
+                                  // TODO
+                                  addingMoreFiles: 'Daha bir neçə fayl əlavə et',
+                                  // Used as the header for import panels, e.g., “Import from Google Drive”.
+                                  importFrom: '%{name}dan yüklə',
+                                  // When `inline: false`, used as the screen reader label for the dashboard modal.
+                                  dashboardWindowTitle: 'Uppy Dashboard Window (Press escape to close)',
+                                  // When `inline: true`, used as the screen reader label for the dashboard area.
+                                  dashboardTitle: 'Uppy Dashboard',
+                                  // Shown in the Informer when a link to a file was copied to the clipboard.
+                                  copyLinkToClipboardSuccess: 'Link copied to clipboard.',
+                                  // Used when a link cannot be copied automatically — the user has to select the text from the
+                                  // input element below this string.
+                                  copyLinkToClipboardFallback: 'Copy the URL below',
+                                  // Used as the hover title and screen reader label for buttons that copy a file link.
+                                  copyLink: 'Copy link',
+                                  // Used as the hover title and screen reader label for file source icons, e.g., “File source: Dropbox”.
+                                  fileSource: 'File source: %{name}',
+                                  // Used as the label for buttons that accept and close panels (remote providers or metadata editor)
+                                  done: 'Bitdi',
+                                  cancel: 'Ləğv et',
+                                  // TODO
+                                  back: 'Geri',
+                                  // Used as the screen reader label for buttons that remove a file.
+                                  removeFile: 'Faylı sil',
+                                  // Used as the screen reader label for buttons that open the metadata editor panel for a file.
+                                  editFile: 'Fayla düzəliş et',
+                                  // Shown in the panel header for the metadata editor. Rendered as “Editing image.png”.
+                                  editing: '%{file} düzəliş edilir',
+                                  // Text for a button shown on the file preview, used to edit file metadata
+                                  edit: 'Düzəliş et',
+                                  // Used as the screen reader label for the button that saves metadata edits and returns to the
+                                  // file list view.
+                                  finishEditingFile: 'Düzəliş etməyi bitir',
+                                  // TODO
+                                  saveChanges: 'Yadda saxla',
+                                  // Used as the label for the tab button that opens the system file selection dialog.
+                                myDevice: 'Kompüterim',
+                                webcam:"Kamera",
+                                  // Shown in the main dashboard area when no files have been selected, and one or more
+                                  // remote provider plugins are in use. %{browse} is replaced with a link that opens the system
+                                  // file selection dialog.
+                                  dropPasteImport: 'Faylları buraya buraxın, yapışdırın və ya %{browse}',
+                                  // Shown in the main dashboard area when no files have been selected, and no provider
+                                  // plugins are in use. %{browse} is replaced with a link that opens the system
+                                  // file selection dialog.
+                                  dropPaste: 'Faylları buraya buraxın, yapışdırın və ya %{browse}',
+                                  // TODO
+                                  dropHint: 'Faylları buraya buraxın',
+                                  // This string is clickable and opens the system file selection dialog.
+                                  browse: 'axtar',
+                                  // Used as the hover text and screen reader label for file progress indicators when
+                                  // they have been fully uploaded.
+                                  uploadComplete: 'Yüklənmə bitdi',
+                                  // TODO
+                                  uploadPaused: 'Yüklənmə dayandı',
+                                  // Used as the hover text and screen reader label for the buttons to resume paused uploads.
+                                  resumeUpload: 'Yüklənməni yenilə',
+                                  // Used as the hover text and screen reader label for the buttons to pause uploads.
+                                  pauseUpload: 'Yüklənməni dayandır',
+                                  // Used as the hover text and screen reader label for the buttons to retry failed uploads.
+                                  retryUpload: 'Retry upload',
+                                  // Used as the hover text and screen reader label for the buttons to cancel uploads.
+                                  cancelUpload: 'Yüklənməni ləğv et',
+
+                                  // Used in a title, how many files are currently selected
+                                  xFilesSelected: {
+                                    0: '%{smart_count} fayl seçilib',
+                                    1: '%{smart_count} fayllar seçilib'
+                                  },
+                                  // TODO
+                                  uploadingXFiles: {
+                                    0: 'Uploading %{smart_count} file',
+                                    1: 'Uploading %{smart_count} files'
+                                  },
+                                  // TODO
+                                  processingXFiles: {
+                                    0: 'Processing %{smart_count} file',
+                                    1: 'Processing %{smart_count} files'
+                                  },
+
+                                  // The "powered by Uppy" link at the bottom of the Dashboard.
+                                  // **NOTE**: This string is called `poweredBy2` for backwards compatibility reasons.
+                                  // See https://github.com/transloadit/uppy/pull/2077
+                                  poweredBy2: 'Powered by %{uppy}',
+
+                                  uploading: 'Yüklənir',
+                                  complete: 'Bitdi'
+                                  // ...etc
+                                }
+                        }
+                    }
+
+                     uppyDashboard = Uppy.Core({
+                        id: 'uppy',
+                        autoProceed: false,
+                        allowMultipleUploads: true,
+                        restrictions: {
+                            allowedFileTypes: ['image/*'],
+                            maxFileSize: null,
+                            minFileSize: null,
+                            maxTotalFileSize: null,
+                            maxNumberOfFiles: 10,
+                            minNumberOfFiles: 1
+                        }
+                    });
+
+                    uppyDashboard.use(Dashboard, options);
+                    uppyDashboard.use(Webcam, {
+                        target: Dashboard,
+                        title:"Kamera",
+                        modes: [
+                            //'video-audio',
+                            //'video-only',
+                            //'audio-only',
+                            'picture'
+                        ],
+                        locale: {
+                            strings: {
+                                webcam: "Kamera",
+                                // Shown before a picture is taken when the `countdown` option is set.
+                                smile: 'Gülümsə',
+                                // Used as the label for the button that takes a picture.
+                                // This is not visibly rendered but is picked up by screen readers.
+                                takePicture: 'Şəkil çək',
+                                // Used as the label for the button that starts a video recording.
+                                // This is not visibly rendered but is picked up by screen readers.
+                                startRecording: 'Video çəkməyə başla',
+                                // Used as the label for the button that stops a video recording.
+                                // This is not visibly rendered but is picked up by screen readers.
+                                stopRecording: 'Video çəkməyi dayandır',
+                                // Used as the label for the recording length counter. See the showRecordingLength option.
+                                // This is not visibly rendered but is picked up by screen readers.
+                                recordingLength: 'Video uzunluğu %{recording_length}',
+                                // Title on the “allow access” screen
+                                allowAccessTitle: 'Zəhmət olmasa kameraya icaze verin',
+                                // Description on the “allow access” screen
+                                allowAccessDescription: 'In order to take pictures or record video with your camera, please allow camera access for this site.'
+                            }
+                        }
+                    });
+                   
+                    uppyDashboard.use(ImageEditor, {
+                        id: 'ImageEditor',
+                        target: Dashboard,
+                        quality: 0.8,
+                        cropperOptions: {
+                            viewMode: 1,
+                            background: false,
+                            autoCropArea: 1,
+                            responsive: true
+                        },
+                        actions: {
+                            revert: true,
+                            rotate: true,
+                            flip: true,
+                            zoomIn: true,
+                            zoomOut: true,
+                            cropSquare: true,
+                            cropWidescreen: true,
+                            cropWidescreenVertical: true
+                        }
+                    })
+                    uppyDashboard.on('file-added', (file) => {
+                        totalSize += file.data.size;
+                        let reader = new FileReader();
+                        reader.readAsDataURL(file.data);
+                        reader.onloadend = function () {
+                            let base64data = reader.result;
+                            files[file.id] = base64data;
+                        };
+                    })
+                    uppyDashboard.on('file-removed', (file, reason) => {
+                        totalSize -= file.data.size;
+                        delete files[file.id];
+                    })
+                    uppyDashboard.on('file-editor:complete', (updatedFile) => {
+                        totalSize += updatedFile.data.size;
+                        let reader = new FileReader();
+                        reader.readAsDataURL(updatedFile.data);
+                        reader.onloadend = function () {
+                            let base64data = reader.result;
+                            files[updatedFile.id] = base64data;
+                        };
+                    })
                 }
-               };
-              }();
+                return {
+                    // public functions
+                    init: function () {
+                        initUppy1();
+                    }
+                };
+            }();
 
-   
+
+
         jQuery(document).ready(function () {
             KTMaskDemo.init();
             KTInputmask.init();
+            KTUtil.ready(function () {
+                KTUppy.init();
+
+                 $('.uppy-Dashboard-AddFiles-title').html('@UI.FileUploadTitle');
+            });
         });
 
        function onBegin() {
@@ -190,7 +449,29 @@
        function onSuccess(data) {
            window.location.href = "@Url.Action(nameof(UserController.Index), UserController.Name)";
        }
-       function onFailure(data) {
-       }
-    </script>
+        function onFailure(data) {
+
+        }
+
+        function submitOnClicked(e) {
+            //$('#fileMaxError').addClass('showFileError');
+            @*var tot = Math.ceil((totalSize / 1024) / 1000);
+            if (tot > parseInt(@Html.Raw(Formats.FileSize))) {
+                $('#fileMaxError').removeClass('showFileError');
+                throw new Error('File size exception');
+            }*@
+            $(".files").remove();
+            $(".filetype").remove();
+            $(".filename").remove();
+            console.log(uppyDashboard.state.files);
+            console.log(files);
+            if (files.length != 0) {
+                for (var file in uppyDashboard.state.files) {
+                    $("form").append(" <input class='files' type='hidden' value='" + files[uppyDashboard.state.files[file].id] + "'  name='Base64String' />");
+                    $("form").append(" <input class='filetype' type='hidden'value='" + uppyDashboard.state.files[file].data.type + "' name='ContentType' />");
+                    $("form").append(" <input class='filename' type='hidden' value='" + uppyDashboard.state.files[file].data.name + "'  name='FileName' />");
+                }
+            }
+        }
+        </script>
 }

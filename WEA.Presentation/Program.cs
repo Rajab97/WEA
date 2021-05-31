@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,7 +28,7 @@ namespace WEA.Presentation
                 {
                     var context = services.GetRequiredService<AppDbContext>();
                     //                    context.Database.Migrate();
-                    context.Database.EnsureCreated();
+                    context.Database.Migrate();
                     SeedData.Initialize(services).Wait();
                 }
                 catch (Exception ex)

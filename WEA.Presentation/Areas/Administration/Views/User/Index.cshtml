@@ -1,4 +1,10 @@
 ﻿
+@{ 
+    ViewBag.Title = UI.Users;
+    ViewBag.SubHeaders = new List<SubHeaderItemModel>() {
+                            new SubHeaderItemModel(){ Text = UI.Users , Url = Url.Action(nameof(RoleController.Index))}
+    };
+}
 
 <div class="d-flex flex-column-fluid">
     <!--begin::Container-->

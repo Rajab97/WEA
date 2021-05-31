@@ -1,11 +1,15 @@
 ﻿using AutoMapper;
 using DevExtreme.AspNet.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
@@ -13,12 +17,15 @@ using System.Threading.Tasks;
 using System.Transactions;
 using WEA.Core.Entities;
 using WEA.Core.Interfaces;
+using WEA.Core.Interfaces.Services;
+using WEA.Core.Models;
 using WEA.Presentation.Areas.Administration.Models;
 using WEA.Presentation.Areas.Administration.Services;
 using WEA.Presentation.Controllers;
 using WEA.Presentation.Helpers.Statics;
 using WEA.Presentation.Services;
 using WEA.SharedKernel;
+using WEA.SharedKernel.Interfaces;
 
 namespace WEA.Presentation.Areas.Administration.Controllers
 {
@@ -29,27 +36,42 @@ namespace WEA.Presentation.Areas.Administration.Controllers
         public const string Area = AreaConstants.Admin;
         private readonly UserManager<User> _userManager;
         private readonly RoleManager<Role> _roleManager;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly UserServiceFacade _facade;
         private readonly IMapper _mapper;
         private readonly IEmailService _emailService;
         private readonly SignInManager<User> _signInManager;
         private readonly AccountServiceFacade _accountServiceFacade;
+        private readonly IConfiguration _configuration;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IAttachmentService _attachmentService;
+        private readonly FileServiceFacade _fileService;
 
         public UserController(UserManager<User> userManager,
             RoleManager<Role> roleManager,
+                            IUnitOfWork unitOfWork,
                                 UserServiceFacade facade,
                                 IMapper mapper,
                                 IEmailService emailService,
                                 SignInManager<User> signInManager,
-                                AccountServiceFacade accountServiceFacade)
+                                AccountServiceFacade accountServiceFacade,
+                                IConfiguration configuration,
+                                IWebHostEnvironment webHostEnvironment,
+                                IAttachmentService attachmentService,
+                                FileServiceFacade fileService)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _unitOfWork = unitOfWork;
             _facade = facade;
             _mapper = mapper;
             _emailService = emailService;
             _signInManager = signInManager;
             _accountServiceFacade = accountServiceFacade;
+            _configuration = configuration;
+            _webHostEnvironment = webHostEnvironment;
+            _attachmentService = attachmentService;
+            _fileService = fileService;
         }
         public IActionResult Index()
         {
@@ -89,7 +111,8 @@ namespace WEA.Presentation.Areas.Administration.Controllers
                 {
                     return AjaxFailureResult(passwordResult);
                 }
-                using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+               
+                using (var scope = _unitOfWork.CreateScoppedTransaction())
                 {
                     var result = await _userManager.CreateAsync(user, passwordResult.Data);
                     if (result.Succeeded)
@@ -114,8 +137,17 @@ namespace WEA.Presentation.Areas.Administration.Controllers
                         var callBackUrl = Url.Action(nameof(AccountController.EmailConfirmation), AccountController.Name, new { area = AccountController.Area, code = base64String, userId = user.Id }, Request.Scheme);
                         await _emailService.SendEmailAsync(user.Email, "WEA email təsdiqlə",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callBackUrl)}'>clicking here</a>. Your password is {passwordResult.Data}.");
-
-                        scope.Complete();
+                        var fileResult = await _fileService.UploadAsync(new Presentation.Models.AttachmentViewModel()
+                        {
+                            ProductId = user.Id,
+                            Base64String = model.Base64String,
+                            ContentType = model.ContentType,
+                            FileName = model.FileName
+                        });
+                        if (fileResult.IsSucceed)
+                            await _unitOfWork.CommitAsync();
+                        else
+                            return AjaxFailureResult(fileResult);
                         /*if (_userManager.Options.SignIn.RequireConfirmedEmail)
                         {
                             return RedirectToAction(nameof(AccountController.RequireConfirmedEmail), AccountController.Name, new { area = AccountController.Area });

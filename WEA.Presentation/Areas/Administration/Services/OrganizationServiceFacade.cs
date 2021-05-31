@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,16 @@ namespace WEA.Presentation.Areas.Administration.Services
             this._service = service;
             this._mapper = mapper;
         }
+        public async Task<Result<OrganizationViewModel>> GetDefaultModelAsync()
+        {
+            var result = await _service.GetAll().Data.FirstOrDefaultAsync();
+            if (result != null)
+            {
+                var model = _mapper.Map<OrganizationViewModel>(result);
+                return Succeed(model);
+            }
+            return Result<OrganizationViewModel>.Failure("Obyekt əlavə edilməyib");
+        }
         public async Task<Result<OrganizationViewModel>> GetModel(Guid id)
         {
             var result = await _service.GetByIdAsync(id);
@@ -48,10 +59,9 @@ namespace WEA.Presentation.Areas.Administration.Services
                 {
                     var dbModel = await _service.GetByIdAsync(model.Id);
                     if (dbModel.IsSucceed)
-                    {
                         dto = _mapper.Map(model, dbModel.Data);
-                    }
-                    return Result.Failure(ExceptionMessages.ExOrganizationNotFound);
+                    else
+                        return Result.Failure(ExceptionMessages.ExOrganizationNotFound);
                 }
                 var result = model.Id == Guid.Empty ? await _service.CreateAsync(dto) : await _service.EditAsync(dto);
                 if (result.IsSucceed)

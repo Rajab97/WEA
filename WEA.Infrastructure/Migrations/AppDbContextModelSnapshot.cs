@@ -120,6 +120,51 @@ namespace WEA.Infrastructure.Migrations
                     b.ToTable("UserTokens");
                 });
 
+            modelBuilder.Entity("WEA.Core.Entities.Attachment", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("FileExtension")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Version")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasDefaultValue(1);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Attachments");
+                });
+
             modelBuilder.Entity("WEA.Core.Entities.Menu", b =>
                 {
                     b.Property<Guid>("Id")
@@ -202,19 +247,8 @@ namespace WEA.Infrastructure.Migrations
                     b.Property<DateTime?>("ExpiredDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("IdentificationNumber")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<decimal?>("Lattitude")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal?>("Longtitude")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("OrganizationAddress")
                         .HasMaxLength(250)
@@ -224,14 +258,6 @@ namespace WEA.Infrastructure.Migrations
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
-
-                    b.Property<Guid>("OwnerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ProductType")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("TelephoneNumber")
                         .HasMaxLength(25)
@@ -250,12 +276,6 @@ namespace WEA.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdentificationNumber")
-                        .IsUnique();
-
-                    b.HasIndex("OwnerId")
-                        .IsUnique();
-
                     b.ToTable("Organizations");
                 });
 
@@ -268,6 +288,9 @@ namespace WEA.Infrastructure.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDefaultRole")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsSuperAdmin")
                         .HasColumnType("bit");
@@ -387,6 +410,9 @@ namespace WEA.Infrastructure.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
+                    b.Property<Guid?>("OrganizationId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("PasswordHash")
                         .HasColumnType("nvarchar(max)");
 
@@ -428,6 +454,8 @@ namespace WEA.Infrastructure.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("OrganizationId");
 
                     b.ToTable("Users");
                 });
@@ -492,17 +520,6 @@ namespace WEA.Infrastructure.Migrations
                     b.Navigation("Parent");
                 });
 
-            modelBuilder.Entity("WEA.Core.Entities.Organization", b =>
-                {
-                    b.HasOne("WEA.Core.Entities.User", "Owner")
-                        .WithOne("Organization")
-                        .HasForeignKey("WEA.Core.Entities.Organization", "OwnerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Owner");
-                });
-
             modelBuilder.Entity("WEA.Core.Entities.RoleMenu", b =>
                 {
                     b.HasOne("WEA.Core.Entities.Menu", "Menu")
@@ -522,6 +539,15 @@ namespace WEA.Infrastructure.Migrations
                     b.Navigation("Role");
                 });
 
+            modelBuilder.Entity("WEA.Core.Entities.User", b =>
+                {
+                    b.HasOne("WEA.Core.Entities.Organization", "Organization")
+                        .WithMany()
+                        .HasForeignKey("OrganizationId");
+
+                    b.Navigation("Organization");
+                });
+
             modelBuilder.Entity("WEA.Core.Entities.Menu", b =>
                 {
                     b.Navigation("RoleMenus");
@@ -530,11 +556,6 @@ namespace WEA.Infrastructure.Migrations
             modelBuilder.Entity("WEA.Core.Entities.Role", b =>
                 {
                     b.Navigation("RoleMenus");
-                });
-
-            modelBuilder.Entity("WEA.Core.Entities.User", b =>
-                {
-                    b.Navigation("Organization");
                 });
 #pragma warning restore 612, 618
         }

@@ -141,6 +141,12 @@
   <data name="FatalError" xml:space="preserve">
     <value>Əməliyyat zamanı xəta baş verdi</value>
   </data>
+  <data name="FileNotRemoved" xml:space="preserve">
+    <value>Fayl silinmədi</value>
+  </data>
+  <data name="FileSizeNotAllowed" xml:space="preserve">
+    <value>Fayl və ya fayllardan hər hansısa birinin ölçüsü {0} mb-dan artıqdır. {0} mb-dan artıq fayllar yüklənə bilməz. Zəhmət olmasa faylın ölçüsünü azaldın.</value>
+  </data>
   <data name="InvalidEmail" xml:space="preserve">
     <value>Email formatı düzgün deyil</value>
   </data>
@@ -149,6 +155,12 @@
   </data>
   <data name="InvalidUserName" xml:space="preserve">
     <value>İstifadəçi adı yalnız hərf və rəqəmlərdən ibarət ola bilər</value>
+  </data>
+  <data name="MinOnefile" xml:space="preserve">
+    <value>Ən azı bir sənəd yükləyin</value>
+  </data>
+  <data name="ObjectNotCreated" xml:space="preserve">
+    <value>Obyekt yaradıla bilmədi</value>
   </data>
   <data name="PageNotFound" xml:space="preserve">
     <value>Axtardığınız səhifə tapılmadı</value>
@@ -170,6 +182,9 @@
   </data>
   <data name="PasswordTooShort" xml:space="preserve">
     <value>Şifrə uzunluğu qısadır</value>
+  </data>
+  <data name="RolesNotCreated" xml:space="preserve">
+    <value>Rollar yaradıla bilmədi</value>
   </data>
   <data name="UniqueOwnerOccur" xml:space="preserve">
     <value>Sahibkar təkrarlana bilməz</value>
@@ -194,5 +209,8 @@
   </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>Istifadəçi tapılmadı</value>
+  </data>
+  <data name="UsersNotCreated" xml:space="preserve">
+    <value>İstifadəçilər yaradıla bilmədi</value>
   </data>
 </root>

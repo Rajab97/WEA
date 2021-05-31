@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -54,5 +55,8 @@ namespace WEA.Presentation.Areas.Administration.Models
         [Required(ErrorMessageResourceType = typeof(ValidationMessages), ErrorMessageResourceName = nameof(ValidationMessages.Required))]
         public String[] Roles { get; set; }
 
+        public List<string> Base64String { get; set; }
+        public List<string> FileName { get; set; }
+        public List<string> ContentType { get; set; }
     }
 }
