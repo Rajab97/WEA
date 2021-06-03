@@ -13,5 +13,6 @@ namespace WEA.Core.Entities
         public string FilePath { get; set; }
         public string ContentType { get; set; }
         public string Description { get; set; }
+        public DateTime? CreatedDate { get; set; }
     }
 }

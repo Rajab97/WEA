@@ -1,0 +1,239 @@
+﻿@using WEA.SharedKernel.Resources
+<script>
+    // Class definition
+            var files = {};
+            var totalSize = 0;
+            var uppyDashboard;
+            var KTUppy = function () {
+                const Tus = Uppy.Tus;
+                const ProgressBar = Uppy.ProgressBar;
+                const StatusBar = Uppy.StatusBar;
+                const FileInput = Uppy.FileInput;
+                const Informer = Uppy.Informer;
+                const ImageEditor = Uppy.ImageEditor;
+                // to get uppy companions working, please refer to the official documentation here: https://uppy.io/docs/companion/
+                const Dashboard = Uppy.Dashboard;
+                const Dropbox = Uppy.Dropbox;
+                const GoogleDrive = Uppy.GoogleDrive;
+                const Instagram = Uppy.Instagram;
+                const Webcam = Uppy.Webcam;
+
+                var initUppy1 = function () {
+                    var id = '#kt_uppy_1';
+
+                    var options = {
+                        proudlyDisplayPoweredByUppy: false,
+                        target: id,
+                        inline: true,
+                        replaceTargetContent: true,
+                        showProgressDetails: true,
+                        hideUploadButton: true,
+                        hideRetryButton: true,
+                        hidePauseResumeButton: true,
+                        showProgressDetails: true,
+                        browserBackButtonClose: true,
+                        plugins: ['ImageEditor', 'Webcam'],
+                        locale: {
+                            strings: {
+                                  // When `inline: false`, used as the screen reader label for the button that closes the modal.
+                                  closeModal: 'Close Modal',
+                                // Used as the screen reader label for the plus (+) button that shows the “Add more files” screen
+                                addMoreFiles: '@Html.Raw(UI.AddMoreFiles)',
+                                  addMore: '@Html.Raw(UI.AddMoreFiles)',
+                                  // TODO
+                                  addingMoreFiles: '@Html.Raw(UI.AddMoreFiles)',
+                                  // Used as the header for import panels, e.g., “Import from Google Drive”.
+                                  importFrom: '%{name} @Html.Raw(UI.ImportFrom)',
+                                  // When `inline: false`, used as the screen reader label for the dashboard modal.
+                                  dashboardWindowTitle: 'Uppy Dashboard Window (Press escape to close)',
+                                  // When `inline: true`, used as the screen reader label for the dashboard area.
+                                  dashboardTitle: 'Uppy Dashboard',
+                                  // Shown in the Informer when a link to a file was copied to the clipboard.
+                                  copyLinkToClipboardSuccess: 'Link copied to clipboard.',
+                                  // Used when a link cannot be copied automatically — the user has to select the text from the
+                                  // input element below this string.
+                                  copyLinkToClipboardFallback: 'Copy the URL below',
+                                  // Used as the hover title and screen reader label for buttons that copy a file link.
+                                  copyLink: 'Copy link',
+                                  // Used as the hover title and screen reader label for file source icons, e.g., “File source: Dropbox”.
+                                  fileSource: 'File source: %{name}',
+                                // Used as the label for buttons that accept and close panels (remote providers or metadata editor)
+                                  done: '@Html.Raw(UI.Done)',
+                                  cancel: '@Html.Raw(UI.Cancel)',
+                                  // TODO
+                                  back: '@Html.Raw(UI.Back)',
+                                  // Used as the screen reader label for buttons that remove a file.
+                                  removeFile: '@Html.Raw(UI.RemoveFile)',
+                                  // Used as the screen reader label for buttons that open the metadata editor panel for a file.
+                                  editFile: '@Html.Raw(UI.EditFile)',
+                                  // Shown in the panel header for the metadata editor. Rendered as “Editing image.png”.
+                                  editing: '%{file} @Html.Raw(UI.Editing)',
+                                  // Text for a button shown on the file preview, used to edit file metadata
+                                  edit: '@Html.Raw(UI.Edit)',
+                                  // Used as the screen reader label for the button that saves metadata edits and returns to the
+                                // file list view.
+                                finishEditingFile: '@Html.Raw(UI.FinishEditingFile)',
+                                  // TODO
+                                  saveChanges: '@Html.Raw(UI.Save)',
+                                // Used as the label for the tab button that opens the system file selection dialog.
+                                myDevice: '@Html.Raw(UI.MyDevice)',
+                                webcam: "@Html.Raw(UI.Webcam)",
+                                  // Shown in the main dashboard area when no files have been selected, and one or more
+                                  // remote provider plugins are in use. %{browse} is replaced with a link that opens the system
+                                // file selection dialog.
+                                dropPasteImport: '@Html.Raw(UI.DropPasteImport)',
+                                  // Shown in the main dashboard area when no files have been selected, and no provider
+                                  // plugins are in use. %{browse} is replaced with a link that opens the system
+                                // file selection dialog.
+                                dropPaste: '@Html.Raw(UI.DropPasteImport)',
+                                // TODO
+                                dropHint: '@Html.Raw(UI.DropHint)',
+                                // This string is clickable and opens the system file selection dialog.
+                                browse: '@Html.Raw(UI.Browse)',
+                                  // Used as the hover text and screen reader label for file progress indicators when
+                                // they have been fully uploaded.
+                                uploadComplete: '@Html.Raw(UI.UploadComplete)',
+                                // TODO
+                                uploadPaused: '@Html.Raw(UI.UploadPaused)',
+                                  // Used as the hover text and screen reader label for the buttons to resume paused uploads.
+                                  resumeUpload: '@Html.Raw(UI.ResumeUpload)',
+                                  // Used as the hover text and screen reader label for the buttons to pause uploads.
+                                  pauseUpload: '@Html.Raw(UI.PauseUpload)',
+                                  // Used as the hover text and screen reader label for the buttons to retry failed uploads.
+                                  retryUpload: 'Retry upload',
+                                  // Used as the hover text and screen reader label for the buttons to cancel uploads.
+                                  cancelUpload: '@Html.Raw(UI.CancelUpload)',
+
+                                  // Used in a title, how many files are currently selected
+                                xFilesSelected: {
+                                    0: '%{smart_count} @Html.Raw(UI.FileSelected)',
+                                    1: '%{smart_count} @Html.Raw(UI.FilesSelected)'
+                                  },
+                                  // TODO
+                                  uploadingXFiles: {
+                                    0: 'Uploading %{smart_count} file',
+                                    1: 'Uploading %{smart_count} files'
+                                  },
+                                  // TODO
+                                  processingXFiles: {
+                                    0: 'Processing %{smart_count} file',
+                                    1: 'Processing %{smart_count} files'
+                                  },
+
+                                  // The "powered by Uppy" link at the bottom of the Dashboard.
+                                  // **NOTE**: This string is called `poweredBy2` for backwards compatibility reasons.
+                                  // See https://github.com/transloadit/uppy/pull/2077
+                                  poweredBy2: 'Powered by %{uppy}',
+
+                                  uploading: '@Html.Raw(UI.Uploading)',
+                                  complete: '@Html.Raw(UI.Complete)'
+                                  // ...etc
+                                }
+                        }
+                    }
+
+                     uppyDashboard = Uppy.Core({
+                        id: 'uppy',
+                        autoProceed: false,
+                        allowMultipleUploads: true,
+                        restrictions: {
+                            allowedFileTypes: ['image/*'],
+                            maxFileSize: @(Convert.ToInt32(Formats.FileSize) * 1024 * 1024),
+                            maxTotalFileSize: @(Convert.ToInt32(Formats.FileSize) * Convert.ToInt32(Formats.MaxFileCount) * 1024 * 1024),
+                            maxNumberOfFiles: @Formats.MaxFileCount,
+                            minNumberOfFiles: 1
+                        }
+                    });
+
+                    uppyDashboard.use(Dashboard, options);
+                    uppyDashboard.use(Webcam, {
+                        target: Dashboard,
+                        title: "@Html.Raw(UI.Webcam)",
+                        modes: [
+                            //'video-audio',
+                            //'video-only',
+                            //'audio-only',
+                            'picture'
+                        ],
+                        locale: {
+                            strings: {
+                                webcam: "@Html.Raw(UI.Webcam)",
+                                // Shown before a picture is taken when the `countdown` option is set.
+                                smile: '@Html.Raw(UI.Smile)',
+                                // Used as the label for the button that takes a picture.
+                                // This is not visibly rendered but is picked up by screen readers.
+                                takePicture: '@Html.Raw(UI.TakePicture)',
+                                // Used as the label for the button that starts a video recording.
+                                // This is not visibly rendered but is picked up by screen readers.
+                                startRecording: '@Html.Raw(UI.StartRecording)',
+                                // Used as the label for the button that stops a video recording.
+                                // This is not visibly rendered but is picked up by screen readers.
+                                stopRecording: '@Html.Raw(UI.StopRecording)',
+                                // Used as the label for the recording length counter. See the showRecordingLength option.
+                                // This is not visibly rendered but is picked up by screen readers.
+                                recordingLength: '@Html.Raw(UI.RecordingLength) %{recording_length}',
+                                // Title on the “allow access” screen
+                                allowAccessTitle: '@Html.Raw(UI.AllowAccessTitle)',
+                                // Description on the “allow access” screen
+                                allowAccessDescription: 'In order to take pictures or record video with your camera, please allow camera access for this site.'
+                            }
+                        }
+                    });
+
+                    uppyDashboard.use(ImageEditor, {
+                        id: 'ImageEditor',
+                        target: Dashboard,
+                        quality: 0.8,
+                        cropperOptions: {
+                            viewMode: 1,
+                            background: false,
+                            autoCropArea: 1,
+                            responsive: true
+                        },
+                        actions: {
+                            revert: true,
+                            rotate: true,
+                            flip: true,
+                            zoomIn: true,
+                            zoomOut: true,
+                            cropSquare: true,
+                            cropWidescreen: true,
+                            cropWidescreenVertical: true
+                        }
+                    })
+                    uppyDashboard.on('file-added', (file) => {
+                        totalSize += file.data.size;
+                        let reader = new FileReader();
+                        reader.readAsDataURL(file.data);
+                        reader.onloadend = function () {
+                            let base64data = reader.result;
+                            files[file.id] = base64data;
+                        };
+                    })
+                    uppyDashboard.on('file-removed', (file, reason) => {
+                        totalSize -= file.data.size;
+                        delete files[file.id];
+                    })
+                    uppyDashboard.on('file-editor:complete', (updatedFile) => {
+                        totalSize += updatedFile.data.size;
+                        let reader = new FileReader();
+                        reader.readAsDataURL(updatedFile.data);
+                        reader.onloadend = function () {
+                            let base64data = reader.result;
+                            files[updatedFile.id] = base64data;
+                        };
+                    })
+                }
+                return {
+                    // public functions
+                    init: function () {
+                        initUppy1();
+                    }
+                };
+            }();
+            jQuery(document).ready(function () {
+                KTUtil.ready(function () {
+                    KTUppy.init();
+                });
+            });
+</script>

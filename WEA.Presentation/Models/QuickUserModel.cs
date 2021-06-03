@@ -8,6 +8,7 @@ namespace WEA.Presentation.Models
 {
     public class QuickUserModel
     {
+        public string PhotoPath { get; set; }
         public User User { get; set; }
         public IList<string> Roles { get; set; }
     }

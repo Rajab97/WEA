@@ -16,14 +16,17 @@ namespace WEA.Presentation.Services
         private readonly IRepository<Menu> _menus;
         private readonly RoleManager<Role> _roles;
         private readonly UserManager<User> _users;
+        private readonly IRepository<CarBrand> _carBrands;
 
         public DictionaryServiceFacade(IRepository<Menu> menus,
                                         RoleManager<Role> roles,
-                                        UserManager<User> users)
+                                        UserManager<User> users,
+                                        IRepository<CarBrand> carBrands)
         {
             _menus = menus;
             _roles = roles;
             _users = users;
+            _carBrands = carBrands;
         }
 
         public IQueryable<SelectListItemGuid> Menus()
@@ -31,7 +34,11 @@ namespace WEA.Presentation.Services
             var result = _menus.GetAll().Select(m => new SelectListItemGuid() { Id = m.Id, Text = m.Title });
             return result;
         }
-
+        public IQueryable<SelectListItemGuid> CarBrands()
+        {
+            var result = _carBrands.GetAll().Select(m => new SelectListItemGuid() { Id = m.Id, Text = m.Name });
+            return result;
+        }
         public IQueryable<User> Users()
         {
             var result = _users.Users;

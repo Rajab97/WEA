@@ -1,0 +1,68 @@
+﻿@model CarModelViewModel
+
+<div class="modal fade" id="newFormModal" tabindex="-1" role="dialog" aria-labelledby="newFormModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable  " role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">@(Model.Id == Guid.Empty ? UI.Create : UI.Edit)</h5>
+            </div>
+            <div class="modal-body" >
+                <form class="form" asp-action="Save" asp-controller="CarModel"
+                      data-ajax="true"
+                      data-ajax-method="POST"
+                      data-ajax-begin="onBegin"
+                      data-ajax-success="onSuccess"
+                      data-ajax-failure="onFailure">
+
+                    @using (Html.DevExtreme().ValidationGroup())
+                    {
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" asp-for="Version" />
+                        <div class="card-body" style="padding-left:0;padding-right:0;">
+                            <div class="form-group row">
+                                <div class="col-lg-12">
+                                    <label asp-for="CarBrandId"></label>
+                                    @Html.DevExtreme().SelectBoxFor(m => m.CarBrandId).DisplayExpr("Text").ValueExpr("Id").DataSource(m => m.Mvc().Area("").Controller(DictionaryController.Name).LoadAction(nameof(DictionaryController.CarBrands)).Key("Id"))
+                                    <span asp-validation-for="CarBrandId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-6">
+                                    <label asp-for="Name"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label asp-for="Code"></label>
+                                    <input asp-for="Code" class="form-control" />
+                                    <span asp-validation-for="Code" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-lg-12">
+                                    <label asp-for="Description"></label>
+                                    <textarea asp-for="Description" rows="5" class="form-control"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-footer d-flex justify-content-end" style="padding-left:0;padding-right:0;">
+                           @* <button type="submit" class="btn btn-primary mr-2">@UI.Save</button>*@
+                             @(Html.DevExtreme().Button()
+                                    .ID("button")
+                                    .Text(UI.Save)
+                                    .ElementAttr("class", "btn btn-primary mr-2")
+                                    .UseSubmitBehavior(true)
+                                )
+                            <button type="button" class="btn btn-light-primary btn-sm font-weight-bold" data-dismiss="modal">@UI.Cancel</button>
+                        </div>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+</script>

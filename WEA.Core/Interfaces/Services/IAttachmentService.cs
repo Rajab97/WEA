@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WEA.Core.Entities;
@@ -13,5 +14,6 @@ namespace WEA.Core.Interfaces.Services
     {
         public Task<Result> UploadAsync(AttachmentModel attachments);
         public Task<Result> RemoveByProductIdAsync(Guid Id);
+        public Result<IQueryable<Attachment>> GetAllByProductId(Guid Id);
     }
 }

@@ -1,0 +1,39 @@
+﻿@using WEA.Core.Entities
+@using WEA.Presentation.Areas.Catalog.Controllers
+@(Html.DevExtreme().DataGrid<CarModel>().ID("dtGrid").ElementAttr("class","dtGrid-custom")
+                             .DataSource(m => m.Mvc().Controller(CarModelController.Name).LoadAction(nameof(CarModelController.GetData)))
+                           .Columns(m =>
+                           {
+                               m.AddFor(m => m.Name).Caption(UI.Name);
+                               m.AddFor(m => m.Code).Caption(UI.Code);
+                               m.AddFor(m => m.Description).Caption(UI.Description);
+                           })
+                        .FilterRow(f => f.Visible(true))
+                        .RemoteOperations(true)
+                        .Selection(m => {
+                            m.Mode(SelectionMode.Single);
+                        })
+                        .WordWrapEnabled(true)
+                        .Pager(p =>
+                        {
+                            p.ShowPageSizeSelector(true);
+                            p.AllowedPageSizes(new int[] { 5, 20, 50 });
+                        })
+                        .Paging(paging => paging.PageSize(10))
+                        .Scrolling(c =>
+                        {
+                            c.Mode(GridScrollingMode.Standard);
+                            c.ShowScrollbar(ShowScrollbarMode.Always);
+                            c.ScrollByContent(true);
+                        })
+                        .OnSelectionChanged("dtGrid.selectionChanged")
+                        .OnContentReady("dtGrid.onContentReady")
+                        .WEAGrid()
+                        //.OnRowPrepared("OnRowPrepared")
+                        //.OnCellPrepared("OnCellPrepared")
+                        .Summary(s => s
+                            .TotalItems(totalItems => {
+                                totalItems.AddFor(m => m.Name).SummaryType(SummaryType.Count);
+                            })
+                        )
+                    )

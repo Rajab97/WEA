@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WEA.Infrastructure.Data;
 
 namespace WEA.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210531140255_AttachmentCreatedDate")]
+    partial class AttachmentCreatedDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -166,83 +168,6 @@ namespace WEA.Infrastructure.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("Attachments");
-                });
-
-            modelBuilder.Entity("WEA.Core.Entities.CarBrand", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Code")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<int>("Version")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(1);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Code")
-                        .IsUnique()
-                        .HasFilter("[Code] IS NOT NULL");
-
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasFilter("[Name] IS NOT NULL");
-
-                    b.ToTable("CarBrands");
-                });
-
-            modelBuilder.Entity("WEA.Core.Entities.CarModel", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CarBrandId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Code")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("Description")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<int>("Version")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(1);
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CarBrandId");
-
-                    b.HasIndex("Code")
-                        .IsUnique()
-                        .HasFilter("[Code] IS NOT NULL");
-
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasFilter("[Name] IS NOT NULL");
-
-                    b.ToTable("CarModels");
                 });
 
             modelBuilder.Entity("WEA.Core.Entities.Menu", b =>
@@ -591,17 +516,6 @@ namespace WEA.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("WEA.Core.Entities.CarModel", b =>
-                {
-                    b.HasOne("WEA.Core.Entities.CarBrand", "CarBrand")
-                        .WithMany("CarModels")
-                        .HasForeignKey("CarBrandId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("CarBrand");
-                });
-
             modelBuilder.Entity("WEA.Core.Entities.Menu", b =>
                 {
                     b.HasOne("WEA.Core.Entities.Menu", "Parent")
@@ -637,11 +551,6 @@ namespace WEA.Infrastructure.Migrations
                         .HasForeignKey("OrganizationId");
 
                     b.Navigation("Organization");
-                });
-
-            modelBuilder.Entity("WEA.Core.Entities.CarBrand", b =>
-                {
-                    b.Navigation("CarModels");
                 });
 
             modelBuilder.Entity("WEA.Core.Entities.Menu", b =>

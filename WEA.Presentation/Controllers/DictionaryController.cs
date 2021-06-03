@@ -24,6 +24,12 @@ namespace WEA.Presentation.Controllers
             var result = _dictionaryServiceFacade.Users();
             return Load(result, options);
         }
+
+        public IActionResult CarBrands(DataSourceLoadOptions options)
+        {
+            var result = _dictionaryServiceFacade.CarBrands();
+            return Load(result, options);
+        }
         public IActionResult Menus(DataSourceLoadOptions options)
         {
             var result = _dictionaryServiceFacade.Menus();

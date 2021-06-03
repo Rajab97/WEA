@@ -141,6 +141,9 @@
   <data name="Address" xml:space="preserve">
     <value>Ünvan</value>
   </data>
+  <data name="AllowAccessTitle" xml:space="preserve">
+    <value>Zəhmət olmasa kameraya icaze verin</value>
+  </data>
   <data name="Area" xml:space="preserve">
     <value>Area</value>
   </data>
@@ -153,14 +156,23 @@
   <data name="AYSDeletInfo" xml:space="preserve">
     <value>Məlumatı silməyə əminsiniz</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Geri</value>
+  </data>
   <data name="BaseCatalog" xml:space="preserve">
     <value>Baş inzibatçılıq</value>
   </data>
   <data name="BaseMenu" xml:space="preserve">
     <value>Baş menu</value>
   </data>
+  <data name="Browse" xml:space="preserve">
+    <value>axtar</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>İmtina et</value>
+  </data>
+  <data name="CancelUpload" xml:space="preserve">
+    <value>Yüklənməni ləğv et</value>
   </data>
   <data name="CanCreate" xml:space="preserve">
     <value>Yenisini yaratma hüququ</value>
@@ -171,11 +183,26 @@
   <data name="CanEdit" xml:space="preserve">
     <value>Məlumata düzəliş etmə hüququ</value>
   </data>
+  <data name="CarBrand" xml:space="preserve">
+    <value>Modelin markası</value>
+  </data>
+  <data name="CarBrands" xml:space="preserve">
+    <value>Maşın markaları</value>
+  </data>
+  <data name="CarModel" xml:space="preserve">
+    <value>Maşın modeli</value>
+  </data>
+  <data name="CarModels" xml:space="preserve">
+    <value>Maşın modelləri</value>
+  </data>
   <data name="CarPart" xml:space="preserve">
     <value>Maşın hissəsi</value>
   </data>
   <data name="CarParts" xml:space="preserve">
     <value>Maşın hissələri</value>
+  </data>
+  <data name="Catalog" xml:space="preserve">
+    <value>İnzibatçılıq</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>Şifrəni yenilə</value>
@@ -185,6 +212,12 @@
   </data>
   <data name="Choose" xml:space="preserve">
     <value>Seçin</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Kodu</value>
+  </data>
+  <data name="Complete" xml:space="preserve">
+    <value>Bitdi</value>
   </data>
   <data name="ConfirmPassowrd" xml:space="preserve">
     <value>Şifrənin təkrarı</value>
@@ -210,8 +243,26 @@
   <data name="DateOfBith" xml:space="preserve">
     <value>Doğum tarixi</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Qeyd</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Bitdi</value>
+  </data>
+  <data name="DropHint" xml:space="preserve">
+    <value>Faylları buraya buraxın</value>
+  </data>
+  <data name="DropPasteImport" xml:space="preserve">
+    <value>Faylları buraya buraxın, yapışdırın və ya axtar</value>
+  </data>
   <data name="Edit" xml:space="preserve">
     <value>Düzəliş et</value>
+  </data>
+  <data name="EditFile" xml:space="preserve">
+    <value>Fayla düzəliş et</value>
+  </data>
+  <data name="Editing" xml:space="preserve">
+    <value>düzəliş edilir</value>
   </data>
   <data name="EditLower" xml:space="preserve">
     <value>düzəliş et</value>
@@ -228,6 +279,12 @@
   <data name="ExpiredDate" xml:space="preserve">
     <value>Son istifadə tarixi</value>
   </data>
+  <data name="FileSelected" xml:space="preserve">
+    <value>fayl seçilib</value>
+  </data>
+  <data name="FilesSelected" xml:space="preserve">
+    <value>fayllar seçilib</value>
+  </data>
   <data name="FileUploadLimitationInfo" xml:space="preserve">
     <value>Hərəsi {0} mb olmaqla maksimum {1} şəkil yüklənə bilər</value>
   </data>
@@ -237,6 +294,9 @@
   <data name="Filter" xml:space="preserve">
     <value>Axtar</value>
   </data>
+  <data name="FinishEditingFile" xml:space="preserve">
+    <value>Düzəliş etməyi bitir</value>
+  </data>
   <data name="ForgotePassword" xml:space="preserve">
     <value>Şifrəni unutmusuz ?</value>
   </data>
@@ -245,6 +305,9 @@
   </data>
   <data name="IdentificationNumber" xml:space="preserve">
     <value>İdentifikasiya nömrəsi</value>
+  </data>
+  <data name="ImportFrom" xml:space="preserve">
+    <value>dan yüklə</value>
   </data>
   <data name="IsSuperAdmin" xml:space="preserve">
     <value>Adminlik statusu</value>
@@ -267,6 +330,9 @@
   <data name="Menus" xml:space="preserve">
     <value>Menyular</value>
   </data>
+  <data name="MyDevice" xml:space="preserve">
+    <value>Kompüterim</value>
+  </data>
   <data name="MyProfile" xml:space="preserve">
     <value>Mənim profilim</value>
   </data>
@@ -287,6 +353,9 @@
   </data>
   <data name="OrganizationAddress" xml:space="preserve">
     <value>Obyektin ünvanı</value>
+  </data>
+  <data name="OrganizationDetails" xml:space="preserve">
+    <value>Obyekt mlumatları</value>
   </data>
   <data name="OrganizationName" xml:space="preserve">
     <value>Obyektin adı</value>
@@ -309,6 +378,9 @@
   <data name="Patronymic" xml:space="preserve">
     <value>Ata adı</value>
   </data>
+  <data name="PauseUpload" xml:space="preserve">
+    <value>Yüklənməni dayandır</value>
+  </data>
   <data name="PhoneNumber" xml:space="preserve">
     <value>Telofon nömrəsi</value>
   </data>
@@ -321,6 +393,9 @@
   <data name="ProductType" xml:space="preserve">
     <value>Məhsul növü</value>
   </data>
+  <data name="RecordingLength" xml:space="preserve">
+    <value>Video uzunluğu</value>
+  </data>
   <data name="Reload" xml:space="preserve">
     <value>Yenilə</value>
   </data>
@@ -330,8 +405,14 @@
   <data name="Remove" xml:space="preserve">
     <value>Sil</value>
   </data>
+  <data name="RemoveFile" xml:space="preserve">
+    <value>Faylı sil</value>
+  </data>
   <data name="Request" xml:space="preserve">
     <value>Müraciət göndərin</value>
+  </data>
+  <data name="ResumeUpload" xml:space="preserve">
+    <value>Yüklənməni yenilə</value>
   </data>
   <data name="RoleMenu" xml:space="preserve">
     <value>Menyu icazələri</value>
@@ -351,14 +432,35 @@
   <data name="SignOut" xml:space="preserve">
     <value>Çıxış et</value>
   </data>
+  <data name="Smile" xml:space="preserve">
+    <value>Gülüms</value>
+  </data>
+  <data name="StartRecording" xml:space="preserve">
+    <value>Video çəkməyə başla</value>
+  </data>
+  <data name="StopRecording" xml:space="preserve">
+    <value>Video çəkməyi dayandır</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>Ləğv et</value>
+  </data>
+  <data name="TakePicture" xml:space="preserve">
+    <value>Şəkil çək</value>
+  </data>
   <data name="Title" xml:space="preserve">
     <value>Başlığ</value>
+  </data>
+  <data name="UploadComplete" xml:space="preserve">
+    <value>Yüklənmə bitdi</value>
   </data>
   <data name="UploadFiles" xml:space="preserve">
     <value>Yüklə</value>
   </data>
   <data name="Uploading" xml:space="preserve">
     <value>Yüklənir...</value>
+  </data>
+  <data name="UploadPaused" xml:space="preserve">
+    <value>Yüklənmə dayandı</value>
   </data>
   <data name="URL" xml:space="preserve">
     <value>Link</value>
@@ -374,6 +476,9 @@
   </data>
   <data name="Users" xml:space="preserve">
     <value>İstifadəçilər</value>
+  </data>
+  <data name="Webcam" xml:space="preserve">
+    <value>Kamera</value>
   </data>
   <data name="WorkNumber" xml:space="preserve">
     <value>İş nömrəsi</value>

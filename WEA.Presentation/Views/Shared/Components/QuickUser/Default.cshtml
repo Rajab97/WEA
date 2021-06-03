@@ -24,7 +24,17 @@
         <!--begin::Header-->
         <div class="d-flex align-items-center mt-5">
             <div class="symbol symbol-100 mr-5">
-                <div class="symbol-label" style="background-image:url('/assets/media/users/300_21.jpg')"></div>
+                @if (String.IsNullOrEmpty(Model.PhotoPath))
+                {
+                    <div class="symbol-label" style="background-image:url('/assets/media/users/blank.png')"></div>
+                }
+                else
+                {
+                    var pathParts = Model.PhotoPath.Substring(Model.PhotoPath.IndexOf("UploadedFiles") - 1).Split("\\");
+                    var path = String.Join('/',pathParts);
+                    <div class="symbol-label" style="background-image:url('@path')"></div>
+                }
+
                 <i class="symbol-badge bg-success"></i>
             </div>
             <div class="d-flex flex-column">

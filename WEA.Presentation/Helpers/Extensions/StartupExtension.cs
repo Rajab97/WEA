@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WEA.Presentation.Areas.Administration.Services;
+using WEA.Presentation.Areas.Catalog.Services;
 using WEA.Presentation.Services;
 
 namespace WEA.Presentation.Helpers.Extensions
@@ -21,6 +22,8 @@ namespace WEA.Presentation.Helpers.Extensions
             services.AddScoped<DictionaryServiceFacade>();
             services.AddScoped<OrganizationServiceFacade>();
             services.AddScoped<FileServiceFacade>();
+            services.AddScoped<CarBrandServiceFacade>();
+            services.AddScoped<CarModelServiceFacade>();
         }
     }
 }

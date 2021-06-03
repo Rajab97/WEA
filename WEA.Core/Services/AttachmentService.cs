@@ -27,11 +27,13 @@ namespace WEA.Core.Services
             _unitOfWork = unitOfWork;
         }
 
+       
+
         public async Task<Result> RemoveByProductIdAsync(Guid Id)
         {
             try
             {
-                var attachments = GetAll().Data.Where(m => m.ProductId == Id).ToArray();
+                var attachments = _repository.GetAll().Where(m => m.ProductId == Id).ToArray();
                 foreach (var file in attachments)
                 {
                     if (File.Exists(file.FilePath))
@@ -62,9 +64,7 @@ namespace WEA.Core.Services
             string directoryPath = string.Empty;
             List<string> filePaths = new List<string>();
             if (!attachments.Files.Any())
-            {
-                return Result.Failure(ExceptionMessages.MinOnefile);
-            }
+                return Result.Succeed();
 
             try
             {
@@ -93,7 +93,8 @@ namespace WEA.Core.Services
                         FilePath = filePath,
                         ProductId = attachments.ProductId,
                         Description = item.Description,
-                        ContentType = item.ContentType
+                        ContentType = item.ContentType,
+                        CreatedDate = DateTime.Now
                     };
                     await CreateAsync(dto);
                 }
@@ -117,6 +118,22 @@ namespace WEA.Core.Services
             }
         }
 
+        public Result<IQueryable<Attachment>> GetAllByProductId(Guid Id)
+        {
+            try
+            {
+                var result = _repository.GetAll().Where(m => m.ProductId == Id).OrderByDescending(m => m.CreatedDate);
+                return Result<IQueryable<Attachment>>.Succeed(result);
+            }
+            catch (ApplicationException e)
+            {
+                return Result<IQueryable<Attachment>>.Failure(e.Message);
+            }
+            catch (Exception e)
+            {
+                return Result<IQueryable<Attachment>>.Failure(ExceptionMessages.FatalError);
+            }
 
+        }
     }
 }
